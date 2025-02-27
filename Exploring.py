@@ -1,5 +1,5 @@
 # how players interact with the world
-#Game Classes as of 2/7/2025
+
 class Exploring(object):
     """Moving around the space."""
     def __init__(self, jump, sneak):
