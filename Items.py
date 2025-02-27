@@ -8,3 +8,14 @@ class Items(object):
 
         self.name = name
         self.uses = uses
+
+        uses = 5
+
+    def use_object(self):
+        uses = uses -1
+        print("You have used this object! Only "+ uses + " left!")
+
+class Key(Items):
+    """Initializes keys that the player is trying to find."""
+    def __Init__(self, ):
+        super().__init__
