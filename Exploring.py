@@ -15,8 +15,6 @@ class Exploring(object):
         sneak = sneak + 1
         print("You decide to sneak.")
         
-    
-
 class Cat_Moves(Exploring):
     """initializes basic actions a cat can do"""
     def __init__(self, jump, sneak):
