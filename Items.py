@@ -1,7 +1,7 @@
 #Items.py
 #General space for the items that may be encountered in the game
 
-class Things(object):
+class Items(object):
     """Initializes objects the player can interact with."""
     def __init__(self, name, uses):
         """Sets up the basic details of the object."""
@@ -19,7 +19,7 @@ class Things(object):
         elif uses == 0:
             print("You have used this object! No more uses left.")
 
-class Key(Things):
+class Key(Items):
     """Initializes keys that the player is trying to find."""
     def __Init__(self, ):
         super().__init__
