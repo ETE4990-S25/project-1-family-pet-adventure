@@ -8,8 +8,9 @@ class Exploring(object):
         self.sneak = sneak
     
     def jump_up(self):
-        jump = jump + 1
-        print("You jump.")
+        """Allows player to jump. The more the player jumps, the stronger they become."""
+        self.jump
+        print("You jump "+ jump +"")
 
     def jump_up(self):
         sneak = sneak + 1
@@ -35,7 +36,6 @@ class Dog_Moves(Exploring):
         """sets up basic actions"""
         super().__init__(self, jump, sneak)
         
-
     def sprint(self, ):
         super().sprint(self)
         print("You sprint.")
