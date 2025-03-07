@@ -51,10 +51,8 @@ class TreatJar(Items):
 
         uses = 1
 
-class Stick(Items):
-    """Creates a stick that can be used."""
-    def __init__(self, name, uses):
-        super().__init__(self, name, uses)
+
+
 
 class Laptop(Items):
     """Creates a laptop that can be used. Careful!"""
@@ -63,6 +61,13 @@ class Laptop(Items):
 
 class Phone(Items):
     """Creates a phone that can be used. Careful!"""
+    def __init__(self, name, uses):
+        super().__init__(self, name, uses)
+
+
+
+class Stick(Items):
+    """Creates a stick that can be used."""
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
 
