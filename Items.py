@@ -11,14 +11,14 @@ class Items(object):
         self.name = name
         self.uses = uses #determines how many uses an object gets
 
-    def display_object(self):
+    def display_items(self):
         """Displays the objects you have in your inventory."""
         
         print("Your Inventory: ")
         for items in self.inventory:
             print(items)
     
-    def use_object(self):
+    def use_item(self):
         """Iterates the number of uses an object has."""
         uses = uses -1
         
@@ -27,7 +27,7 @@ class Items(object):
         elif uses == 0:
             print("You have used this object! No more uses left.")
     
-    def take_object(self, thing):
+    def take_item(self, thing):
         """Allows the player to put the object in their inventory."""
         self.inventory.append(thing)
 
@@ -61,3 +61,27 @@ class Laptop(Items):
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
 
+class Phone(Items):
+    """Creates a phone that can be used. Careful!"""
+    def __init__(self, name, uses):
+        super().__init__(self, name, uses)
+
+class Yarn(Items):
+    """Creates a ball of yarn that can be used."""
+    def __init__(self, name, uses):
+        super().__init__(self, name, uses)
+
+class Shoes(Items):
+    """Creates a shoe that can be used."""
+    def __init__(self, name, uses):
+        super().__init__(self, name, uses)
+
+class Glasses(Items):
+    """Creates a pair of glasses that can be used."""
+    def __init__(self, name, uses):
+        super().__init__(self, name, uses)
+
+class FoodBowl(Items):
+    """Creates a food bowl that can be used."""
+    def __init__(self, name, uses):
+        super().__init__(self, name, uses)
