@@ -8,14 +8,22 @@ class Exploring(object):
         self.sneak = sneak
     
     def jump_up(self, jump):
-        """Allows player to jump.""" # The more the player jumps, the stronger they become."""
+        """Allows player to jump. The more the player jumps, the stronger they become."""
         
         print("You jump "+ jump +"units.")
-        #jump = jump + 0.25
+        jump = jump + 0.25
 
     def sneaking(self, sneak):
-        sneak = sneak + 1
+        
         print("You decide to sneak.")
+        sneak = sneak + 0.25
+        
+    def get_stats(self):
+        """Displays the stats of the player on the console."""
+        print("Your general stats are as follows: ")
+        print("Jump stat: "+ self.jump + "units.")
+        print("Sneak stat: "+ self.sneak + "units.")
+
         
 class CatMoves(Exploring):
     """represents the actions a cat can do"""
@@ -27,7 +35,10 @@ class CatMoves(Exploring):
         
     def furniture_leap(self):
         super().furniture_leap(self)
-        print("You jump onto the furniture.")
+        if self.high_leap == True: 
+            print("You jump onto the furniture.")
+        else:
+            print("Your attempt failed.")
 
     def climb_up(self):
         super().climb(self)

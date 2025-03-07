@@ -2,7 +2,9 @@
 #General space for the items that may be encountered in the game
 
 class Items(object):
-    """Initializes objects the player can interact with."""
+    """Initializes objects the player can interact with and store."""
+    inventory = []
+    
     def __init__(self, name, uses):
         """Sets up the basic details of the object."""
 
@@ -18,9 +20,9 @@ class Items(object):
         elif uses == 0:
             print("You have used this object! No more uses left.")
     
-    def take_object(self):
+    def take_object(self, thing):
         """Allows the player to put the object in their inventory."""
-        inventory = {}
+        self.inventory.append(thing)
 
         x = 1
 
@@ -46,3 +48,9 @@ class Stick(Items):
     """Creates a stick that can be used."""
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
+
+class Laptop(Items):
+    """Creates a laptop that can be used. Careful!"""
+    def __init__(self, name, uses):
+        super().__init__(self, name, uses)
+
