@@ -11,6 +11,13 @@ class Items(object):
         self.name = name
         self.uses = uses #determines how many uses an object gets
 
+    def display_object(self):
+        """Displays the objects you have in your inventory."""
+        
+        print("Your Inventory: ")
+        for items in self.inventory:
+            print(items)
+    
     def use_object(self):
         """Iterates the number of uses an object has."""
         uses = uses -1
