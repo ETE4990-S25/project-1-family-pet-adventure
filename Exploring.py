@@ -15,7 +15,7 @@ class Exploring(object):
         jump = jump + 0.25
 
     def sneaking(self, sneak):
-        
+        """Allows player to sneak around. The more the player does so, the stronger they become."""
         print("You decide to sneak.")
         sneak = sneak + 0.25
         
@@ -25,9 +25,10 @@ class Exploring(object):
         print("Jump stat: "+ self.jump + "units.")
         print("Sneak stat: "+ self.sneak + "units.")
 
+
         
 class CatMoves(Exploring):
-    """represents the actions a cat can do"""
+    """Represents the actions a cat can do."""
     def __init__(self, jump, sneak, high_leap, climb):
         """Sets up basic actions and specific actions."""
         super().__init__(self, jump, sneak)
@@ -46,7 +47,7 @@ class CatMoves(Exploring):
         print("You climb up the stucture.")
 
 class DogMoves(Exploring):
-    """represents the  actions a dog can do"""
+    """Represents the  actions a dog can do"""
     def __init__(self, jump, sneak, spring, paw_stand):
         """sets up basic actions"""
         super().__init__(self, jump, sneak)

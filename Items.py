@@ -1,5 +1,6 @@
 #Items.py
 #General space for the items that may be encountered in the game
+global endgame
 
 class Items(object):
     """Initializes objects the player can interact with and store."""
@@ -30,9 +31,19 @@ class Items(object):
     def take_item(self, thing):
         """Allows the player to put the object in their inventory."""
         self.inventory.append(thing)
+        print("You have added "+ thing+" to your inventory.")
 
-        x = 1
+    def eat_item(self, item):
+        """Allows the player to eat an item in their inventory."""
+        
+        print("You have eaten "+ item)
+        self.inventory.pop(item)
+        self.endgame = True
 
+    def drop_item(self, item):
+        """The player will drop an item in their inventory."""
+        self.inventory.remove(item)
+        print("You have chosen to drop "+ item)
         
 
 class Key(Items):
@@ -42,6 +53,10 @@ class Key(Items):
         """Sets up the basic instances of the key."""
 
         uses = 1
+
+    def use_key(self):
+        uses = uses -1
+        print("You have used the key.")
 
 class TreatJar(Items):
     """Initializes the treat jar (goal of game)."""
