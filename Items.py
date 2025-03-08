@@ -23,10 +23,11 @@ class Items(object):
         """Iterates the number of uses an object has."""
         uses = uses -1
         
-        if uses != 0:
+        if uses > 0:
             print("You have used this object! Only "+ uses + " left!")
-        elif uses == 0:
-            print("You have used this object! No more uses left.")
+        elif uses <= 0:
+            print("Not so fast! Any more uses of this object, "
+            "and the humans may get suspicious")
     
     def take_item(self, thing):
         """Allows the player to put the object in their inventory."""
@@ -82,20 +83,32 @@ class Laptop(Items):
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
 
+        uses = 1
+
     def doggy_cam(self, password):
         """Allows the player to turn off the doggy cams."""
         if password == 1111:
             print("The cameras are disabled.")
+
+        if self.uses == 0:
+            print("You have already turned the cameras off.")
 
 class Phone(Items):
     """Creates a phone that can be used. Careful!"""
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
 
+        uses = 1
+
     def hide_phone(self):
         """Hides humans' phone to create a distraction."""
 
         print("You have hidden the phone!")
+        
+        if self.uses == 0:
+            print("You've already hidden the phone.")
+
+        uses -= 1
 
 
 
@@ -104,6 +117,11 @@ class Stick(Items):
     """Creates a stick that can be used."""
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
+
+    def poke(self):
+        """Allows user to use the stick. Great for annoying humans."""
+        
+        print("You have used the stick to poke at the thing in front of you.")
 
 
 class Yarn(Items):
