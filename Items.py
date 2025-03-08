@@ -55,6 +55,8 @@ class Key(Items):
         uses = 1
 
     def use_key(self):
+        """Allows the player to get to locked spaces."""
+        
         uses = uses -1
         print("You have used the key.")
 
@@ -66,6 +68,12 @@ class TreatJar(Items):
 
         uses = 1
 
+    def end_game(self):
+        """Ends the game when the player finds the treat jar."""
+        
+        print("You found the treat jar! Congratulations!")
+        return "The End!"
+
 
 
 
@@ -74,10 +82,21 @@ class Laptop(Items):
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
 
+    def doggy_cam(self, password):
+        """Allows the player to turn off the doggy cams."""
+        if password == 1111:
+            print("The cameras are disabled.")
+
 class Phone(Items):
     """Creates a phone that can be used. Careful!"""
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
+
+    def hide_phone(self):
+        """Hides humans' phone to create a distraction."""
+
+        print("You have hidden the phone!")
+
 
 
 
@@ -86,22 +105,51 @@ class Stick(Items):
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
 
+
 class Yarn(Items):
     """Creates a ball of yarn that can be used."""
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
+
+    def unwind_yarn(self):
+        """Creates a tripping hazard to distract the humans."""
+        print("You have unwound the ball of yarn. This is a tripping hazard.")
+
 
 class Shoes(Items):
     """Creates a shoe that can be used."""
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
 
+    def super_jump(self):
+        """When worn, the player can jump 3x their usual height."""
+        
+        # import Exploring.jump_up() as jump
+
+        jump = jump*3 
+        print("You super jumped!")
+        print("Height: "+jump)
+
+
 class Glasses(Items):
     """Creates a pair of glasses that can be used."""
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
 
+    def xray_vision(self):
+        """Allows the player to see into locked areas."""
+
+        print("X-Ray vision!")
+        print("You see . . . ")
+
+        # find a way to show things in locked areas
+
+
 class FoodBowl(Items):
     """Creates a food bowl that can be used."""
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
+
+    def clang(self):
+        """Creates a loud sound for a distraction."""
+        print("The bowl clangs, distracting the humans.")
