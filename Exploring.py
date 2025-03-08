@@ -26,7 +26,7 @@ class Exploring(object):
         print("Sneak stat: "+ self.sneak + "units.")
 
 
-        
+# Child classes      
 class CatMoves(Exploring):
     """Represents the actions a cat can do."""
     def __init__(self, jump, sneak, high_leap, climb):

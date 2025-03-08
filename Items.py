@@ -1,6 +1,5 @@
 #Items.py
 #General space for the items that may be encountered in the game
-global endgame
 
 class Items(object):
     """Initializes objects the player can interact with and store."""
@@ -46,7 +45,7 @@ class Items(object):
         self.inventory.remove(item)
         print("You have chosen to drop "+ item)
         
-
+# Endgame items. 
 class Key(Items):
     """Initializes keys that the player is trying to find."""
     def __Init__(self, name, uses):
@@ -76,8 +75,7 @@ class TreatJar(Items):
         return "The End!"
 
 
-
-
+# Human items. Items that belong to the humans, but you can manipulate. 
 class Laptop(Items):
     """Creates a laptop that can be used. Careful!"""
     def __init__(self, name, uses):
@@ -111,8 +109,7 @@ class Phone(Items):
         uses -= 1
 
 
-
-
+# Regular items
 class Stick(Items):
     """Creates a stick that can be used."""
     def __init__(self, name, uses):
