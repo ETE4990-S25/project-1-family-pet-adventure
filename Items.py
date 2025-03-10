@@ -1,10 +1,17 @@
 #Items.py
-#General space for the items that may be encountered in the game
-global endgame
+#General space for the physical items that may be encountered in the game
+# Also, Initializes human NPC enemies that may be walking around because they can be distracted by items.
 
 class Items(object):
     """Initializes objects the player can interact with and store."""
-    inventory = []
+    import json
+    inventory = {}
+    
+    with open('Item_Data.json') as Item_Data:
+        shows = json.load(Item_Data)
+    #print(json.dumps(shows, indent=2))
+    #shows_dict = json.dumps(shows, indent=2)
+
     
     def __init__(self, name, uses):
         """Sets up the basic details of the object."""
@@ -46,7 +53,7 @@ class Items(object):
         self.inventory.remove(item)
         print("You have chosen to drop "+ item)
         
-
+# Endgame items. 
 class Key(Items):
     """Initializes keys that the player is trying to find."""
     def __Init__(self, name, uses):
@@ -76,8 +83,7 @@ class TreatJar(Items):
         return "The End!"
 
 
-
-
+# Human items. Items that belong to the humans, but you can manipulate. 
 class Laptop(Items):
     """Creates a laptop that can be used. Careful!"""
     def __init__(self, name, uses):
@@ -111,8 +117,7 @@ class Phone(Items):
         uses -= 1
 
 
-
-
+# Regular items
 class Stick(Items):
     """Creates a stick that can be used."""
     def __init__(self, name, uses):
@@ -126,12 +131,16 @@ class Stick(Items):
 
 class Yarn(Items):
     """Creates a ball of yarn that can be used."""
-    def __init__(self, name, uses):
+    def __init__(self, name, uses, length):
         super().__init__(self, name, uses)
+
+        self.length = length
+        self.cleaning_time = length/2
 
     def unwind_yarn(self):
         """Creates a tripping hazard to distract the humans."""
         print("You have unwound the ball of yarn. This is a tripping hazard.")
+        print("The humans will have to spend "+ self.cleaning_time + " seconds cleaning it up.")
 
 
 class Shoes(Items):
@@ -171,3 +180,15 @@ class FoodBowl(Items):
     def clang(self):
         """Creates a loud sound for a distraction."""
         print("The bowl clangs, distracting the humans.")
+
+
+
+
+# #For making the human NPC enemies
+# class EnemyHuman(object):
+#     def __init__(self, range, distracted=False):
+#         self.range = range
+#         self.distracted = distracted
+
+#     def distract_human(self, distracted):
+#         self.distracted = True
