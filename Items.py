@@ -3,7 +3,7 @@
 
 class Items(object):
     """Initializes objects the player can interact with and store."""
-    inventory = []
+    inventory = {}
     
     def __init__(self, name, uses):
         """Sets up the basic details of the object."""
@@ -123,12 +123,16 @@ class Stick(Items):
 
 class Yarn(Items):
     """Creates a ball of yarn that can be used."""
-    def __init__(self, name, uses):
+    def __init__(self, name, uses, length):
         super().__init__(self, name, uses)
+
+        self.length = length
+        self.cleaning_time = length/2
 
     def unwind_yarn(self):
         """Creates a tripping hazard to distract the humans."""
         print("You have unwound the ball of yarn. This is a tripping hazard.")
+        print("The humans will have to spend "+ self.cleaning_time + " seconds cleaning it up.")
 
 
 class Shoes(Items):
