@@ -5,12 +5,11 @@
 class Items(object):
     """Initializes objects the player can interact with and store."""
     import json
-    inventory = {}
-    
+        
     with open('Item_Data.json') as Item_Data:
-        shows = json.load(Item_Data)
+        inventory_template = json.load(Item_Data)
     #print(json.dumps(shows, indent=2))
-    #shows_dict = json.dumps(shows, indent=2)
+    inventory = json.dumps(inventory_template, indent=2)
 
     
     def __init__(self, name, uses):
@@ -101,15 +100,20 @@ class Laptop(Items):
 
 class Phone(Items):
     """Creates a phone that can be used. Careful!"""
-    def __init__(self, name, uses):
+    def __init__(self, name, uses, hidden=False):
         super().__init__(self, name, uses)
 
         uses = 1
+        
 
     def hide_phone(self):
         """Hides humans' phone to create a distraction."""
-
-        print("You have hidden the phone!")
+        
+        self.hidden = True
+        destraction_time = 500
+        HumanNPC.distract_human(destraction_time)
+        print("You have hidden the phone!" + destraction_time + 
+              "seconds before the humans come back.")
         
         if self.uses == 0:
             print("You've already hidden the phone.")
@@ -135,12 +139,14 @@ class Yarn(Items):
         super().__init__(self, name, uses)
 
         self.length = length
-        self.cleaning_time = length/2
+        self.destraction_time = length/2
 
     def unwind_yarn(self):
         """Creates a tripping hazard to distract the humans."""
         print("You have unwound the ball of yarn. This is a tripping hazard.")
-        print("The humans will have to spend "+ self.cleaning_time + " seconds cleaning it up.")
+        print("The humans will have to spend "+ self.destraction_time + " seconds cleaning it up.")
+
+        HumanNPC.distract_human(self.destraction_time)
 
 
 class Shoes(Items):
@@ -151,7 +157,8 @@ class Shoes(Items):
     def super_jump(self):
         """When worn, the player can jump 3x their usual height."""
         
-        # import Exploring.jump_up() as jump
+        import Exploring
+        jump = Exploring.jump_up()
 
         jump = jump*3 
         print("You super jumped!")
@@ -179,16 +186,27 @@ class FoodBowl(Items):
 
     def clang(self):
         """Creates a loud sound for a distraction."""
+        
+        destraction_time = 100
+        HumanNPC(destraction_time)
         print("The bowl clangs, distracting the humans.")
+        print("The humans will be destracted for the next " + 
+              destraction_time + "seconds")
 
 
 
 
-# #For making the human NPC enemies
-# class EnemyHuman(object):
-#     def __init__(self, range, distracted=False):
-#         self.range = range
-#         self.distracted = distracted
+#For making the human NPC enemies
+class HumanNPC(object):
+    def __init__(self, range, distracted=False):
+        self.range = range
+        self.distracted = distracted
 
-#     def distract_human(self, distracted):
-#         self.distracted = True
+    def distract_human(self, seconds):
+        import time
+        
+        current_time = time.time() #ChatGPT for this line
+        end_time = current_time + seconds
+
+        while (current_time < end_time):
+            self.distracted = True
