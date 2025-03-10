@@ -1,5 +1,6 @@
 #Items.py
-#General space for the items that may be encountered in the game
+#General space for the physical items that may be encountered in the game
+# Also, Initializes human NPC enemies that may be walking around because they can be distracted by items.
 
 class Items(object):
     """Initializes objects the player can interact with and store."""
@@ -172,3 +173,15 @@ class FoodBowl(Items):
     def clang(self):
         """Creates a loud sound for a distraction."""
         print("The bowl clangs, distracting the humans.")
+
+
+
+
+# #For making the human NPC enemies
+# class EnemyHuman(object):
+#     def __init__(self, range, distracted=False):
+#         self.range = range
+#         self.distracted = distracted
+
+#     def distract_human(self, distracted):
+#         self.distracted = True

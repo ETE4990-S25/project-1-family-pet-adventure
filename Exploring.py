@@ -52,7 +52,7 @@ class DogMoves(Exploring):
         """sets up basic actions"""
         super().__init__(self, jump, sneak)
         
-    def sprint(self, ):
+    def sprint(self):
         super().sprint(self)
         print("You sprint.")
 
