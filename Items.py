@@ -4,7 +4,14 @@
 
 class Items(object):
     """Initializes objects the player can interact with and store."""
+    import json
     inventory = {}
+    
+    with open('Item_Data.json') as Item_Data:
+        shows = json.load(Item_Data)
+    #print(json.dumps(shows, indent=2))
+    #shows_dict = json.dumps(shows, indent=2)
+
     
     def __init__(self, name, uses):
         """Sets up the basic details of the object."""
