@@ -12,14 +12,14 @@ class Items(object):
     inventory = json.dumps(inventory_template, indent=2)
 
     
-    def __init__(self, name, uses, description="Common object."):
+    def __init__(self, name, uses, description):
         """Sets up the basic details of the object."""
 
         self.name = name
         self.uses = uses #determines how many uses an object gets
         
         import json
-        with open('Item_Data.json', 'r') as Item_Data:
+        with open('Item_Data.json', 'r') as Item_Data: # taken from online
             data = json.load(Item_Data)
             data[name] = name
             data[description] = description
@@ -41,7 +41,7 @@ class Items(object):
         uses = self.uses -1
         
         if uses > 0:
-            print("You have used this object! Only "+ uses + " left!")
+            print("Only "+ uses + " left!")
         elif uses <= 0:
             print("Not so fast! Any more uses of this object, "
             "and the humans may get suspicious")
@@ -102,11 +102,12 @@ class Items(object):
 # Endgame items. 
 class Key(Items):
     """Initializes keys that the player is trying to find."""
-    def __Init__(self, name, uses, description = "Endgame Item"):
-        super().__init__(self, name, uses)
+    def __Init__(self, name, uses, description):
+        super().__init__(self, name, uses, description)
         """Sets up the basic instances of the key."""
 
         uses = 1
+        self.description = "Key"
 
     def use_key(self):
         """Allows the player to get to locked spaces."""
@@ -116,26 +117,27 @@ class Key(Items):
 
 class TreatJar(Items):
     """Initializes the treat jar (goal of game)."""
-    def __init__(self, name, uses, description = "Endgame Item"):
-        super().__init__(self, name, uses)
-        """Brings the function of the Items class here"""
+    def __init__(self, name, uses, description):
+        super().__init__(self, name, uses, description)
+        """Ends the game."""
 
         uses = 1
+        self.description ="Treat Jar"
 
-    def end_game(self):
-        """Ends the game when the player finds the treat jar."""
-        
         print("You found the treat jar! Congratulations!")
         return "The End!"
+
+       
 
 
 # Human items. Items that belong to the humans, but you can manipulate. 
 class Laptop(Items):
-    """Creates a laptop that can be used. Careful!"""
-    def __init__(self, name, uses):
-        super().__init__(self, name, uses)
+    """Creates a laptop that can be used."""
+    def __init__(self, name, uses, description):
+        super().__init__(self, name, uses, description)
 
-        uses = 1
+        self.uses = 1
+        self.description = "Laptop"
 
     def pet_cam(self, password):
         """Allows the player to turn off the doggy cams."""
@@ -148,20 +150,20 @@ class Laptop(Items):
 
 class Phone(Items):
     """Creates a phone that can be used. Careful!"""
-    def __init__(self, name, uses, hidden=False):
+    def __init__(self, name, uses):
         super().__init__(self, name, uses)
 
         uses = 1
+
         
 
     def hide_phone(self):
         """Hides humans' phone to create a distraction."""
         
-        self.hidden = True
-        destraction_time = 500
+        destraction_time = 1000
         HumanNPC.distract_human(destraction_time)
-        print("You have hidden the phone!" + destraction_time + 
-              "seconds before the humans come back.")
+        print("You have hidden the phone!" + (destraction_time/60) + 
+              "minutes before the humans are n olonger distracted.")
         
         if self.uses == 0:
             print("You've already hidden the phone.")
@@ -179,6 +181,7 @@ class Stick(Items):
         """Allows user to use the stick. Great for annoying humans."""
         
         print("You have used the stick to poke at the thing in front of you.")
+        Items.use_item()
 
 
 class Yarn(Items):
