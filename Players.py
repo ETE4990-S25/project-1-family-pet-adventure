@@ -7,6 +7,8 @@ class Player_Choice(object):
         self.pet_name = pet_name
         self.pet_type= pet_type
         self.inventory= []
+        self.jump= 1.0
+        self.sneak=1.0
         """For player's item collection."""
 
     def Select_pet(self, pet_choice=None):
@@ -83,6 +85,7 @@ explore.sneaking()
 explore.get_stats()
 
 stick= Items("Stick", 3, "A simple stick to poke things.")
+player.inventory.append(stick)
 
 stick.display_item()
 stick.use_item()
@@ -103,6 +106,54 @@ Family_Pet_Adventure.Select_pet()
 
 Family_Pet_Adventure.display_players()
 """Displays the selected choice for the player."""
+
+
+
+
+
+
+import json
+
+def save_game(player):
+    """Save the game details to a json file."""
+    game_data= {
+        "pet_name": player.pet_name,
+        "pet_type": player.pet_type,
+        "jump_stat": player.jump,
+        "sneak_stat": player.sneak,
+        "inventory": [{"name": Items.name, "uses": Items.uses, "description": Items.description} for item in player.inventory]
+    }
+
+    with open("save_game.josn", "w") as save_file:
+        json.dump(game_data, save_file, indent=4)
+
+    print("Game saved successfully!")
+
+def menu():
+    """""Creates a menu players can access."""
+
+    options = ["Exit Menu", "Display Inventory","Save Game"]
+    print("Options: \n")
     
+    for i in enumerate(options, start = 1):
+        print(i)
+
+    choice = int(input("Enter the number of the chosen option: "))
+
+    if choice == 1:
+        return 
+    elif choice == 2:
+        for item in player.inventory:
+            print(f"Item: {item.name}, Uses: {item.uses}, Description: {item.description}") 
+        return
+
+    elif choice == 3:
+        save_game(player)
+        return
+    else:
+        print("Invalid choice.")
+
+player.Select_pet()
+menu()
        
    

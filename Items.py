@@ -3,6 +3,23 @@
 # Also, Initializes human NPC enemies that may be walking around because they can be distracted by items.
 # Also menu function
 
+import json
+
+def save_game(player):
+    """Save the game details to a json file."""
+    game_data= {
+        "pet_name": player.pet_name,
+        "pet_type": player.pet_type,
+        "jump_stat": player.jump,
+        "sneak_stat": player.sneak,
+        "inventory": [{"name": Items.name, "uses": Items.uses, "description": Items.description} for item in player.inventory]
+    }
+
+    with open("save_game.josn", "w") as save_file:
+        json.dump(game_data, save_file, indent=4)
+
+    print("Game saved successfully!")
+
 def menu():
     """""Creates a menu players can access."""
 
@@ -17,16 +34,16 @@ def menu():
     if choice == 1:
         return 
     elif choice == 2:
-        Items.display_items()
+        for item in player.inventory:
+            print(f"Item: {item.name}, Uses: {item.uses}, Description: {item.description}") 
         return
 
     elif choice == 3:
-        # Save the details of the game
-
-
+        save_game(player)
         return
     else:
-        return
+        print("Invalid choice.")
+    
 
 
 class Items(object):
