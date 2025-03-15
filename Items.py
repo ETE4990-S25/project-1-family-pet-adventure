@@ -1,34 +1,45 @@
 #Items.py
 #General space for the physical items that may be encountered in the game
 # Also, Initializes human NPC enemies that may be walking around because they can be distracted by items.
+# Also menu function
+
+def menu():
+    """""Creates a menu players can access."""
+
+    options = ["Exit Menu", "Display Inventory","Save Game"]
+    print("Options: \n")
+    
+    for i in enumerate(options, start = 1):
+        print(i)
+
+    choice = int(input("Enter the number of the chosen option: "))
+
+    if choice == 1:
+        return 
+    elif choice == 2:
+        Items.display_items()
+        return
+
+    elif choice == 3:
+        # Save the details of the game
+
+
+        return
+    else:
+        return
+
 
 class Items(object):
-    """Initializes objects the player can interact with and store."""
-    import json
-        
-    with open('Item_Data.json') as Item_Data:
-        inventory_template = json.load(Item_Data)
-    #print(json.dumps(shows, indent=2))
-    inventory = json.dumps(inventory_template, indent=2)
-
-    
+    """Initializes objects the player can interact with and store."""  
+       
     def __init__(self, name, uses, description):
         """Sets up the basic details of the object."""
 
         self.name = name
         self.uses = uses #determines how many uses an object gets
+        self.description = description
         
-        import json
-        with open('Item_Data.json', 'r') as Item_Data: # taken from online
-            data = json.load(Item_Data)
-            data[name] = name
-            data[description] = description
-            data[uses] = uses
-
-        with open('Item_Data.json', 'w') as Item_Data:
-            json.dump(data, Item_Data)
-
-
+        
     def display_items(self):
         """Displays the objects you have in your inventory."""
         
@@ -49,6 +60,23 @@ class Items(object):
     def take_item(self, thing):
         """Allows the player to put the object in their inventory."""
 
+        # import json
+        # with open('Item_Data.json', 'r') as Item_Data: # taken from online
+        #     data = json.load(Item_Data)
+        #     data["name"] = self.name
+        #     data["description"] = self.description
+        #     data["uses"] = self.uses
+
+        # with open('Item_Data.json', 'w') as Item_Data:
+        #     json.dump(data, Item_Data)
+
+        import json
+        with open('Item_Data.json') as Item_Data:
+            inventory_template = json.load(Item_Data)
+        #print(json.dumps(shows, indent=2))
+        inventory = json.dumps(inventory_template, indent=2)
+
+
         # self.inventory.append(thing)
         print("You have added "+ thing+" to your inventory.")
 
@@ -59,7 +87,6 @@ class Items(object):
             # Check for the condition where you want to modify the value
         
             x = 0
-            
             for i in range(0, 11):
                 if item["id"] == i:
 
@@ -79,6 +106,9 @@ class Items(object):
                     break
             if x == 1:
                 break
+       
+        # with open('Item_Data.json', 'w') as Item_Data:
+        #     json.dump(data, Item_Data)
 
 
 
