@@ -18,11 +18,13 @@ def menu():
         return 
     elif choice == 2:
         Items.display_items()
-        abc = 1
+        return
 
     elif choice == 3:
-        
-        abc=1
+        # Save the details of the game
+
+
+        return
     else:
         return
 
