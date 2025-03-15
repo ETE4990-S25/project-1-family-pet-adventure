@@ -4,7 +4,7 @@
 class Exploring(object):
     """Moving around the space."""
     def __init__(self, jump, sneak):
-        """ Initialize jump, sneak, and effectiveness."""
+        """ Initialize jump, and sneak."""
         self.jump = jump
         self.sneak = sneak
     
