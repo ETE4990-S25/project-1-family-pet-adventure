@@ -1,5 +1,5 @@
-###Gives options to two players to choose a character and their name.
-##Two characters in our game is a dog or a cat.
+###Gives option to the player to choose a pet character and their name.
+##Two characters in our game are a dog or a cat.
 class Player_Choice(object):
     """Creates a class to choose a player and a pet."""
 
@@ -36,7 +36,7 @@ class Exploring(object):
     def jump_up(self):
         """Allows player to jump. The more the player jumps, the stronger they become."""
 
-        print("You jump {self.jump} units.")  ###Learned to use {} instead of + here since a float is being passed from the internet. 
+        print(f"You jump {self.jump} units.")  ###Learned to use f and {} instead of + here since a float is being passed from the internet. 
         self.jump+= 0.25
 
     def sneaking(self):
@@ -47,8 +47,8 @@ class Exploring(object):
     def get_stats(self):
         """Displays the stats of the player on the console."""
         print("Your general stats are as follows: ")
-        print("Jump stat: {self.jump} units.")
-        print("Sneak stat: {self.sneak} units.")
+        print(f"Jump stat: {self.jump} units.")
+        print(f"Sneak stat: {self.sneak} units.")
 
 class Items:
       """Represents collectible and usuable items."""
@@ -72,7 +72,7 @@ class Items:
            print("Item: " + self.name + ":" + self.description + "(Uses:" +str(self.uses)+")")
 
 player = Player_Choice()
-player.select_pet()
+player.Select_pet()
 player.display_players()
 
 

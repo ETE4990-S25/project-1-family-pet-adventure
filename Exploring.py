@@ -31,7 +31,7 @@ class CatMoves(Exploring):
     """Represents the actions a cat can do."""
     def __init__(self, jump, sneak, high_leap, climb):
         """Sets up basic actions and specific actions."""
-        super().__init__(self, jump, sneak)
+        super().__init__(jump, sneak)
         self.high_leap = True
         self.climb = True
         
