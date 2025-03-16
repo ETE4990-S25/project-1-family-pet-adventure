@@ -20,7 +20,7 @@ def save_game(player):
 
     print("Game saved successfully!")
 
-def menu():
+def menu(player):  # added player parameter to resolve warning. 
     """""Creates a menu players can access."""
 
     options = ["Exit Menu", "Display Inventory","Save Game"]
