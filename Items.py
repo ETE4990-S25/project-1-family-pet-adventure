@@ -46,25 +46,30 @@ def menu():
     
 
 
+#Items.py
+#General space for the physical items that may be encountered in the game
+# Also, Initializes human NPC enemies that may be walking around because they can be distracted by items.
+# Also menu function
+
 class Items(object):
     """Initializes objects the player can interact with and store."""  
        
-    def __init__(self, name, uses, description):
+    def __init__(self, name=None, uses=None, description=None, inventory_template=None):
         """Sets up the basic details of the object."""
 
         self.name = name
         self.uses = uses #determines how many uses an object gets
         self.description = description
-        
+        self.inventory_template= inventory_template
         
     def display_items(self):
         """Displays the objects you have in your inventory."""
         
         import json
         with open('Item_Data.json') as Item_Data:
-            inventory_template = json.load(Item_Data)
+            self.inventory_template = json.load(Item_Data)
         #print(json.dumps(shows, indent=2))
-        inventory = json.dumps(inventory_template, indent=2)
+        inventory = json.dumps(self.inventory_template, indent=2)
 
 
         for all_Item_Data in self.inventory_template["items"]: #structure taken from ChatGPT
@@ -73,11 +78,11 @@ class Items(object):
     
     def use_item(self):
         """Iterates the number of uses an object has."""
-        uses = self.uses -1
+        self.uses -= 1
         
-        if uses > 0:
-            print("Only "+ uses + " left!")
-        elif uses <= 0:
+        if self.uses > 0:
+            print("Only "+ self.uses + " left!")
+        elif self.uses <= 0:
             print("Not so fast! Any more uses of this object, "
             "and the humans may get suspicious")
     
@@ -226,15 +231,14 @@ class Phone(Items):
 
 # Regular items
 class Brick(Items):
-    """Creates a stick obstacle."""
+    """Creates a stick that can be used."""
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
-        self.uses = 20
 
-    def throw(self):
-        """Allows dog to break up stick piles."""
+    def poke(self):
+        """Allows user to use the stick. Great for annoying humans."""
         
-        print("You have used the brick to break up a stick pile.")
+        print("You have used the stick to poke at the thing in front of you.")
         Items.use_item()
 
 
@@ -274,12 +278,11 @@ class Glasses(Items):
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
 
-        self.uses = 20
-
     def xray_vision(self):
-        """Allows the player to see through things."""
+        """Allows the player to see into locked areas."""
 
-        print("You look through the glasses and see . . .")
+        print("X-Ray vision!")
+        print("You see . . . the treat jar! It has your favorite treats!")
 
         # find a way to show things in locked areas
 
