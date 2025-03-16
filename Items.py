@@ -225,15 +225,16 @@ class Phone(Items):
 
 
 # Regular items
-class Stick(Items):
-    """Creates a stick that can be used."""
+class Brick(Items):
+    """Creates a stick obstacle."""
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
+        self.uses = 20
 
-    def poke(self):
-        """Allows user to use the stick. Great for annoying humans."""
+    def throw(self):
+        """Allows dog to break up stick piles."""
         
-        print("You have used the stick to poke at the thing in front of you.")
+        print("You have used the brick to break up a stick pile.")
         Items.use_item()
 
 
@@ -273,11 +274,12 @@ class Glasses(Items):
     def __init__(self, name, uses):
         super().__init__(self, name, uses)
 
-    def xray_vision(self):
-        """Allows the player to see into locked areas."""
+        self.uses = 20
 
-        print("X-Ray vision!")
-        print("You see . . . the treat jar! It has your favorite treats!")
+    def xray_vision(self):
+        """Allows the player to see through things."""
+
+        print("You look through the glasses and see . . .")
 
         # find a way to show things in locked areas
 
