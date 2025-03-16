@@ -191,7 +191,7 @@ class Phone(Items):
         """Hides humans' phone to create a distraction."""
         
         destraction_time = 1000
-        HumanNPC.distract_human(destraction_time)
+        #HumanNPC.distract_human(destraction_time)
         print("You have hidden the phone!" + (destraction_time/60) + 
               "minutes before the humans are n olonger distracted.")
         
@@ -220,14 +220,14 @@ class Yarn(Items):
         super().__init__(self, name, uses)
 
         self.length = length
-        self.destraction_time = length/2
+
 
     def unwind_yarn(self):
         """Creates a tripping hazard to distract the humans."""
         print("You have unwound the ball of yarn. This is a tripping hazard.")
-        print("The humans will have to spend "+ self.destraction_time + " seconds cleaning it up.")
+        print("The humans will have to spend five minutes cleaning it up.")
 
-        HumanNPC.distract_human(self.destraction_time)
+        #HumanNPC.distract_human(self.destraction_time)
 
 
 class Shoes(Items):
@@ -255,7 +255,7 @@ class Glasses(Items):
         """Allows the player to see into locked areas."""
 
         print("X-Ray vision!")
-        print("You see . . . ")
+        print("You see . . . the treat jar! It has your favorite treats!")
 
         # find a way to show things in locked areas
 
@@ -269,7 +269,7 @@ class FoodBowl(Items):
         """Creates a loud sound for a distraction."""
         
         destraction_time = 100
-        HumanNPC(destraction_time)
+        #HumanNPC(destraction_time)
         print("The bowl clangs, distracting the humans.")
         print("The humans will be destracted for the next " + 
               destraction_time + "seconds")
@@ -278,39 +278,39 @@ class FoodBowl(Items):
 
 
 #For making the human NPC enemies
-class HumanNPC(object):
-    def __init__(self, distracted=False):
-        """Initializes Human NPC states. Not distracted by default. """
+# class HumanNPC(object):
+#     def __init__(self, distracted=False):
+#         """Initializes Human NPC states. Not distracted by default. """
         
-        self.distracted = distracted
+#         self.distracted = distracted
 
-    def get_in_the_way(self):
-        """Function to oppose the player. Uses chance to determine if the delay happens."""
-        import time 
-        import random
+#     def get_in_the_way(self):
+#         """Function to oppose the player. Uses chance to determine if the delay happens."""
+#         import time 
+#         import random
 
-        dice_1 = random.randint(1,6)
-        dice_2 = random.randint(1,6)
-        total = dice_1 + dice_2
+#         dice_1 = random.randint(1,6)
+#         dice_2 = random.randint(1,6)
+#         total = dice_1 + dice_2
 
-        if total >= 8:
-            delay_time = 10
-            current_time = time.time() #ChatGPT for this line
-            end_time = current_time + delay_time
+#         if total >= 8:
+#             delay_time = 10
+#             current_time = time.time() #ChatGPT for this line
+#             end_time = current_time + delay_time
 
-            while (current_time < end_time):
-                print("The human is paying attention. Careful!")
+#             while (current_time < end_time):
+#                 print("The human is paying attention. Careful!")
             
-            print("\n")
-            print("The human has stopped paying attention.")
+#             print("\n")
+#             print("The human has stopped paying attention.")
   
     
-    def distract_human(self, seconds):
-        """Function to stop get_in_the_way temporarily."""
-        import time
+#     def distract_human(self, seconds):
+#         """Function to stop get_in_the_way temporarily."""
+#         import time
                 
-        current_time = time.time() #ChatGPT for this line
-        end_time = current_time + seconds
+#         current_time = time.time() #ChatGPT for this line
+#         end_time = current_time + seconds
 
-        while (current_time < end_time):
-            self.distracted = True
+#         while (current_time < end_time):
+#             self.distracted = True
