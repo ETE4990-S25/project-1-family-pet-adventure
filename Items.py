@@ -215,7 +215,6 @@ class Phone(Items):
         """Hides humans' phone to create a distraction."""
         
         destraction_time = 1000
-        #HumanNPC.distract_human(destraction_time)
         print("You have hidden the phone!" + (destraction_time/60) + 
               "minutes before the humans are n olonger distracted.")
         
@@ -251,7 +250,6 @@ class Yarn(Items):
         print("You have unwound the ball of yarn. This is a tripping hazard.")
         print("The humans will have to spend five minutes cleaning it up.")
 
-        #HumanNPC.distract_human(self.destraction_time)
 
 
 class Shoes(Items):
@@ -293,7 +291,6 @@ class FoodBowl(Items):
         """Creates a loud sound for a distraction."""
         
         destraction_time = 100
-        #HumanNPC(destraction_time)
         print("The bowl clangs, distracting the humans.")
         print("The humans will be destracted for the next " + 
               destraction_time + "seconds")
