@@ -60,6 +60,13 @@ class Items(object):
     def display_items(self):
         """Displays the objects you have in your inventory."""
         
+        import json
+        with open('Item_Data.json') as Item_Data:
+            inventory_template = json.load(Item_Data)
+        #print(json.dumps(shows, indent=2))
+        inventory = json.dumps(inventory_template, indent=2)
+
+
         for all_Item_Data in self.inventory_template["items"]: #structure taken from ChatGPT
             print(all_Item_Data)
 
