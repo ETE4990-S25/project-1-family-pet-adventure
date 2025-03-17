@@ -148,8 +148,8 @@ class Items(object):
 # Endgame items. 
 class Key(Items):
     """Initializes keys that the player is trying to find."""
-    def __Init__(self, name, uses, description):
-        super().__init__(name, uses, description)
+    def __init__(self, name, uses, description, inventory_dictionary):
+        super().__init__(name, uses, description, inventory_dictionary)
         """Sets up the basic instances of the key."""
 
         uses = 1
@@ -163,8 +163,8 @@ class Key(Items):
 
 class TreatJar(Items):
     """Initializes the treat jar (goal of game)."""
-    def __init__(self, name, uses, description = "Treat Jar"):
-        super().__init__(name, uses)
+    def __init__(self, name, uses, description = "Treat Jar", inventory_dictionary = None):
+        super().__init__(name, uses, description, inventory_dictionary)
         """Ends the game."""
 
         uses = 1
@@ -179,7 +179,7 @@ class TreatJar(Items):
 # Human items. Items that belong to the humans, but you can manipulate. 
 class Laptop(Items):
     """Creates a laptop that can be used."""
-    def __init__(self, name, uses, description="Laptop", inventory_dictionary=None):
+    def __init__(self, name="Laptop", uses=1, description="Laptop", inventory_dictionary=None):
         super().__init__(name, uses, description, inventory_dictionary)
 
         self.uses = 1
@@ -196,12 +196,12 @@ class Laptop(Items):
 
 class Phone(Items):
     """Creates a phone that can be used. Careful!"""
-    def __init__(self, name, uses):
-        super().__init__(name, uses)
+    def __init__(self, name, uses, description = "A human's phone. Hide it to distract them.", inventory_dictionary = None):
+        super().__init__(name, uses, description, inventory_dictionary)
 
-        uses = 1
+        uses = 1   
 
-        
+
 
     def hide_phone(self):
         """Hides humans' phone to create a distraction."""
@@ -219,8 +219,8 @@ class Phone(Items):
 # Regular items
 class Brick(Items):
     """Creates a stick that can be used."""
-    def __init__(self, name, uses):
-        super().__init__(name, uses)
+    def __init__(self, name, uses, description = "A heavy brick.", inventory_dictionary=None):
+        super().__init__(name, uses, description, inventory_dictionary)
 
     def poke(self):
         """Allows user to use the stick. Great for annoying humans."""
@@ -231,8 +231,8 @@ class Brick(Items):
 
 class Yarn(Items):
     """Creates a ball of yarn that can be used."""
-    def __init__(self, name, uses, description = "Yarn 100ft long."):
-        super().__init__(name, uses)
+    def __init__(self, name, uses, description = "Yarn 100ft long.", inventory_dictionary = None):
+        super().__init__(name, uses, description, inventory_dictionary)
 
         self.name = name
         self.uses = uses
@@ -249,8 +249,8 @@ class Yarn(Items):
 
 class Shoes(Items):
     """Creates a shoe that can be used."""
-    def __init__(self, name, uses):
-        super().__init__(name, uses)
+    def __init__(self, name, uses, description = "Shoes to help you superjump.", inventory_dictionary = None):
+        super().__init__(name, uses, description, inventory_dictionary)
 
     def super_jump(self):
         """When worn, the player can jump 3x their usual height."""
@@ -265,8 +265,8 @@ class Shoes(Items):
 
 class Glasses(Items):
     """Creates a pair of glasses that can be used."""
-    def __init__(self, name, uses):
-        super().__init__(name, uses)
+    def __init__(self, name, uses, description = "Sees through obstacles", inventory_dictionary = None):
+        super().__init__(name, uses, description, inventory_dictionary)
 
     def xray_vision(self):
         """Allows the player to see into locked areas."""
@@ -279,8 +279,8 @@ class Glasses(Items):
 
 class FoodBowl(Items):
     """Creates a food bowl that can be used."""
-    def __init__(self, name, uses):
-        super().__init__(name, uses)
+    def __init__(self, name, uses, description="Empty food bowl to make a loud sound", inventory_dictionary=None):
+        super().__init__(name, uses, description, inventory_dictionary)
 
     def clang(self):
         """Creates a loud sound for a distraction."""
