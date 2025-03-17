@@ -22,6 +22,7 @@ class Items(object):
         
     
     def use_item(self):
+    
         """Iterates the number of uses an object has."""
         self.uses -= 1
         
@@ -30,6 +31,7 @@ class Items(object):
         elif self.uses <= 0:
             print("Not so fast! Any more uses of this object, "
             "and the humans may get suspicious")
+    
     
     def take_item(self, thing):
         """Allows the player to put the object in their inventory."""
@@ -180,11 +182,12 @@ class Brick(Items):
     def __init__(self, name=None, uses=None, description = "A heavy brick.", inventory_dictionary=None):
         super().__init__(name, uses, description, inventory_dictionary)
 
-    def poke(self):
-        """Allows user to use the stick. Great for annoying humans."""
+    def throw(self):
+        """Allows user to use the brick. Great for moving a pile of sticks."""
         
         print("You have used the stick to poke at the thing in front of you.")
         Items.use_item()
+        self.use_item()
 
 
 class Yarn(Items):
