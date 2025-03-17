@@ -1,49 +1,7 @@
 #Items.py
 #General space for the physical items that may be encountered in the game
 # Also, Initializes human NPC enemies that may be walking around because they can be distracted by items.
-# Also menu function
 
-import json
-
-def save_game(player):
-    """Save the game details to a json file."""
-    game_data= {
-        "pet_name": player.pet_name,
-        "pet_type": player.pet_type,
-        "jump_stat": player.jump,
-        "sneak_stat": player.sneak,
-        "inventory": [{"name": Items.name, "uses": Items.uses, "description": Items.description} for item in player.inventory]
-    }
-
-    with open("save_game.josn", "w") as save_file:
-        json.dump(game_data, save_file, indent=4)
-
-    print("Game saved successfully!")
-
-def menu(player):  # added player parameter to resolve warning. 
-    """""Creates a menu players can access."""
-
-    options = ["Exit Menu", "Display Inventory","Save Game"]
-    print("Options: \n")
-    
-    for i in enumerate(options, start = 1):
-        print(i)
-
-    choice = int(input("Enter the number of the chosen option: "))
-
-    if choice == 1:
-        return 
-    elif choice == 2:
-        for item in player.inventory:
-            print(f"Item: {item.name}, Uses: {item.uses}, Description: {item.description}") 
-        return
-
-    elif choice == 3:
-        save_game(player)
-        return
-    else:
-        print("Invalid choice.")
-    
 
 
 #Items.py
@@ -219,7 +177,7 @@ class Phone(Items):
 # Regular items
 class Brick(Items):
     """Creates a stick that can be used."""
-    def __init__(self, name, uses, description = "A heavy brick.", inventory_dictionary=None):
+    def __init__(self, name=None, uses=None, description = "A heavy brick.", inventory_dictionary=None):
         super().__init__(name, uses, description, inventory_dictionary)
 
     def poke(self):
