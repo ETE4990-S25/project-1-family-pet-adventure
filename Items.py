@@ -178,16 +178,22 @@ class Phone(Items):
 
 # Regular items
 class Brick(Items):
-    """Creates a stick that can be used."""
+    """Creates a brick that can be used."""
     def __init__(self, name=None, uses=None, description = "A heavy brick.", inventory_dictionary=None):
         super().__init__(name, uses, description, inventory_dictionary)
 
     def throw(self):
         """Allows user to use the brick. Great for moving a pile of sticks."""
         
-        print("You have used the stick to poke at the thing in front of you.")
-        Items.use_item()
-        self.use_item()
+        print("You have thrown the brick into the obstacle to clear it.")
+        # Items.use_item()
+        # self.use_item()
+
+        if self.uses > 0:
+            print(f"Only {self.uses} left!")
+        elif self.uses <= 0:
+            print("Not so fast! Any more uses of this object, "
+            "and the humans may get suspicious")
 
 
 class Yarn(Items):
