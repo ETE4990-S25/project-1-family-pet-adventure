@@ -54,27 +54,14 @@ def menu(player):  # added player parameter to resolve warning.
 class Items(object):
     """Initializes objects the player can interact with and store."""  
        
-    def __init__(self, name=None, uses=None, description=None, inventory_template=None):
+    def __init__(self, name=None, uses=None, description=None, inventory_dictionary=None):
         """Sets up the basic details of the object."""
 
         self.name = name
         self.uses = uses #determines how many uses an object gets
         self.description = description
-        self.inventory_template= inventory_template
+        self.inventory_dictionary= inventory_dictionary
         
-    def display_items(self):
-        """Displays the objects you have in your inventory."""
-        
-        import json
-        with open('Item_Data.json') as Item_Data:
-            self.inventory_template = json.load(Item_Data)
-        #print(json.dumps(shows, indent=2))
-        inventory = json.dumps(self.inventory_template, indent=2)
-
-
-        for all_Item_Data in self.inventory_template["items"]: #structure taken from ChatGPT
-            print(all_Item_Data)
-
     
     def use_item(self):
         """Iterates the number of uses an object has."""
@@ -101,9 +88,9 @@ class Items(object):
 
         import json
         with open('Item_Data.json') as Item_Data:
-            inventory_template = json.load(Item_Data)
+            inventory_dictionary = json.load(Item_Data)
         #print(json.dumps(shows, indent=2))
-        inventory = json.dumps(inventory_template, indent=2)
+        inventory = json.dumps(inventory_dictionary, indent=2)
 
 
         # self.inventory.append(thing)
@@ -112,7 +99,7 @@ class Items(object):
 
         #taken from ChatGPT
         # Iterate through the list of items
-        for item in self.inventory_template["items"]:
+        for item in self.inventory_dictionary["items"]:
             # Check for the condition where you want to modify the value
         
             x = 0
@@ -151,7 +138,7 @@ class Items(object):
 
         #modified from ChatGPT
         # Iterate through the list of items
-        for item in self.inventory_template["items"]:
+        for item in self.inventory_dictionary["items"]:
 
             if item["id"] == number:
                 item["name"] = "Empty Slot"  
@@ -162,7 +149,7 @@ class Items(object):
 class Key(Items):
     """Initializes keys that the player is trying to find."""
     def __Init__(self, name, uses, description):
-        super().__init__(self, name, uses, description)
+        super().__init__(name, uses, description)
         """Sets up the basic instances of the key."""
 
         uses = 1
@@ -176,8 +163,8 @@ class Key(Items):
 
 class TreatJar(Items):
     """Initializes the treat jar (goal of game)."""
-    def __init__(self, name, uses, description):
-        super().__init__(self, name, uses, description)
+    def __init__(self, name, uses, description = "Treat Jar"):
+        super().__init__(name, uses)
         """Ends the game."""
 
         uses = 1
@@ -192,11 +179,11 @@ class TreatJar(Items):
 # Human items. Items that belong to the humans, but you can manipulate. 
 class Laptop(Items):
     """Creates a laptop that can be used."""
-    def __init__(self, name, uses, description):
-        super().__init__(self, name, uses, description)
+    def __init__(self, name, uses, description="Laptop", inventory_dictionary=None):
+        super().__init__(name, uses, description, inventory_dictionary)
 
         self.uses = 1
-        self.description = "Laptop"
+        self.description = description
 
     def pet_cam(self, password):
         """Allows the player to turn off the doggy cams."""
@@ -210,7 +197,7 @@ class Laptop(Items):
 class Phone(Items):
     """Creates a phone that can be used. Careful!"""
     def __init__(self, name, uses):
-        super().__init__(self, name, uses)
+        super().__init__(name, uses)
 
         uses = 1
 
@@ -233,7 +220,7 @@ class Phone(Items):
 class Brick(Items):
     """Creates a stick that can be used."""
     def __init__(self, name, uses):
-        super().__init__(self, name, uses)
+        super().__init__(name, uses)
 
     def poke(self):
         """Allows user to use the stick. Great for annoying humans."""
@@ -244,10 +231,13 @@ class Brick(Items):
 
 class Yarn(Items):
     """Creates a ball of yarn that can be used."""
-    def __init__(self, name, uses, length):
-        super().__init__(self, name, uses)
+    def __init__(self, name, uses, description = "Yarn 100ft long."):
+        super().__init__(name, uses)
 
-        self.length = length
+        self.name = name
+        self.uses = uses
+        self.description = description
+
 
 
     def unwind_yarn(self):
@@ -260,7 +250,7 @@ class Yarn(Items):
 class Shoes(Items):
     """Creates a shoe that can be used."""
     def __init__(self, name, uses):
-        super().__init__(self, name, uses)
+        super().__init__(name, uses)
 
     def super_jump(self):
         """When worn, the player can jump 3x their usual height."""
@@ -276,7 +266,7 @@ class Shoes(Items):
 class Glasses(Items):
     """Creates a pair of glasses that can be used."""
     def __init__(self, name, uses):
-        super().__init__(self, name, uses)
+        super().__init__(name, uses)
 
     def xray_vision(self):
         """Allows the player to see into locked areas."""
@@ -290,7 +280,7 @@ class Glasses(Items):
 class FoodBowl(Items):
     """Creates a food bowl that can be used."""
     def __init__(self, name, uses):
-        super().__init__(self, name, uses)
+        super().__init__(name, uses)
 
     def clang(self):
         """Creates a loud sound for a distraction."""
