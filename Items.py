@@ -142,7 +142,7 @@ class Laptop(Items):
     def __init__(self, name="Laptop", uses=1, description="Laptop", inventory_dictionary=None):
         super().__init__(name, uses, description, inventory_dictionary)
 
-        self.uses = 1
+        self.uses = uses
         self.description = description
 
     def pet_cam(self, password):
@@ -159,9 +159,7 @@ class Phone(Items):
     def __init__(self, name, uses, description = "A human's phone. Hide it to distract them.", inventory_dictionary = None):
         super().__init__(name, uses, description, inventory_dictionary)
 
-        uses = 1   
-
-
+        self.uses = 1   
 
     def hide_phone(self):
         """Hides humans' phone to create a distraction."""
@@ -172,7 +170,7 @@ class Phone(Items):
         if self.uses == 0:
             print("You've already hidden the phone.")
 
-        uses -= 1
+        self.uses -= 1
 
 
 # Regular items
@@ -181,6 +179,10 @@ class Brick(Items):
     def __init__(self, name=None, uses=None, description = "A heavy brick.", inventory_dictionary=None):
         super().__init__(name, uses, description, inventory_dictionary)
 
+        self.name = name
+        self.uses = uses
+        self.description = description
+
     def throw(self):
         """Allows user to use the brick. Great for moving a pile of sticks."""
         
@@ -188,11 +190,13 @@ class Brick(Items):
         # Items.use_item()
         # self.use_item()
 
+        self.uses -= 1
         if self.uses > 0:
             print(f"Only {self.uses} left!")
         elif self.uses <= 0:
             print("Not so fast! Any more uses of this object, "
             "and the humans may get suspicious")
+            self.drop_item()
 
 
 class Yarn(Items):
