@@ -14,7 +14,7 @@ class Items(object):
         self.description = description
         self.inventory_dictionary= inventory_dictionary
         
-    def add_item(self, thing):
+    def add_item(self):
         """Allows the player to put the object in their inventory."""
 
         import json
@@ -75,15 +75,17 @@ class Items(object):
 
 class TreatJar(Items):
     """Initializes the treat jar (goal of game)."""
-    def __init__(self, name, uses, description = "Treat Jar", inventory_dictionary = None):
+    def __init__(self, name="Treat Jar", uses=1, description = "Treat Jar", inventory_dictionary = None):
         super().__init__(name, uses, description, inventory_dictionary)
         """Ends the game."""
 
-        uses = 1
+        self.uses = uses
         self.description ="Treat Jar"
 
         print("You found the treat jar! Congratulations!")
-        return "The End!"
+
+
+
 
 # Human items. Items that belong to the humans, but you can manipulate. 
 class Laptop(Items):
