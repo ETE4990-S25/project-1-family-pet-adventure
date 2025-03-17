@@ -220,14 +220,12 @@ class Shoes(Items):
         super().__init__(name, uses, description, inventory_dictionary)
 
     def super_jump(self):
-        """When worn, the player can jump 3x their usual height."""
+        """When worn, the player can jump over any obstacle
+        and towards whatever their heart desires most."""
         
-        import Exploring
-        jump = Exploring.jump_up()
-
-        jump = jump*3 
         print("You super jumped!")
-        print("Height: "+jump)
+        print("You were able to clear this obstacle and get one step closer to the key.")
+
 
 
 class Glasses(Items):
@@ -241,7 +239,6 @@ class Glasses(Items):
         print("X-Ray vision!")
         print("You see . . . the treat jar! It has your favorite treats!")
 
-        # find a way to show things in locked areas
 
 
 class FoodBowl(Items):
@@ -254,5 +251,4 @@ class FoodBowl(Items):
         
         destraction_time = 100
         print("The bowl clangs, distracting the humans.")
-        print("The humans will be destracted for the next " + 
-              destraction_time + "seconds")
+        print(f"The humans will be destracted for the next {destraction_time} seconds")
