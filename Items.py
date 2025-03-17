@@ -167,8 +167,7 @@ class Phone(Items):
         """Hides humans' phone to create a distraction."""
         
         destraction_time = 1000
-        print("You have hidden the phone!" + (destraction_time/60) + 
-              "minutes before the humans are n olonger distracted.")
+        print(f"You have hidden the phone! {destraction_time/60} minutes before the humans are n olonger distracted.")
         
         if self.uses == 0:
             print("You've already hidden the phone.")
@@ -207,9 +206,9 @@ class Yarn(Items):
 
 
 
-    def unwind_yarn(self):
+    def net_yarn(self):
         """Creates a tripping hazard to distract the humans."""
-        print("You have unwound the ball of yarn. This is a tripping hazard.")
+        print("You can use the yarn to create a net and get your key out of a pile of shredded paper.")
         print("The humans will have to spend five minutes cleaning it up.")
 
 
@@ -233,11 +232,11 @@ class Glasses(Items):
     def __init__(self, name, uses, description = "Sees through obstacles", inventory_dictionary = None):
         super().__init__(name, uses, description, inventory_dictionary)
 
-    def xray_vision(self):
+    def night_vision(self):
         """Allows the player to see into locked areas."""
 
-        print("X-Ray vision!")
-        print("You see . . . the treat jar! It has your favorite treats!")
+        print("Night vision!")
+        print("You can pass the tunnel using the night vision.")
 
 
 
