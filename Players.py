@@ -90,25 +90,13 @@ player.inventory.append(stick)
 stick.display_item()
 stick.use_item()
 stick.use_item()
-
-    
-
-            
-        
-    
-        
-     
+       
 
 Family_Pet_Adventure= Player_Choice()
 
 Family_Pet_Adventure.Select_pet()
-"""Allow the player to choose their pets"""
 
 Family_Pet_Adventure.display_players()
-"""Displays the selected choice for the player."""
-
-
-
 
 
 
@@ -124,7 +112,7 @@ def save_game(player):
         "inventory": [{"name": Items.name, "uses": Items.uses, "description": Items.description} for item in player.inventory]
     }
 
-    with open("save_game.josn", "w") as save_file:
+    with open("save_game.json", "w") as save_file:
         json.dump(game_data, save_file, indent=4)
 
     print("Game saved successfully!")

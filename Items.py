@@ -116,7 +116,7 @@ class Phone(Items):
         """Hides humans' phone to create a distraction."""
         
         destraction_time = 1000
-        print(f"You have hidden the phone! {destraction_time/60} minutes before the humans are n olonger distracted.")
+        print(f"You have hidden the phone! {destraction_time/60} minutes before the humans are no longer distracted.")
         
         if self.uses == 0:
             print("You've already hidden the phone.")

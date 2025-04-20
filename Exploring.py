@@ -5,8 +5,8 @@ class Exploring(object):
     """Moving around the space."""
     def __init__(self, jump = 1, sneak = 1):
         """ Initialize jump, and sneak."""
-        self.jump = 1.0
-        self.sneak = 1.0
+        self.jump = jump
+        self.sneak = sneak
     
     def jump_up(self):
         """Allows player to jump. The more the player jumps, the stronger they become."""
@@ -65,7 +65,7 @@ class DogMoves(Exploring):
         """Mechanic for walking around the game and discovering things."""
         import Items
         import random
-        brick= Items.Brick(name="Brick", uses=1)
+        brick = Items.Brick(name="Brick", uses=1)
         shoes = Items.Shoes("Shoes", 5)
         food_bowl = Items.FoodBowl("Food Bowl", 5)
         
@@ -79,7 +79,7 @@ class DogMoves(Exploring):
             print("You have 4 items to use to find your key: \n1:Brick \n2:Laptop \n3:Shoes \n4:Food_Bowl.")
             print("=============")
             
-            move_choice= input("Choose an action (1-4):")
+            move_choice = input("Choose an action (1-4):")
             item_choice= input("chosee an object(1-4):")
             moves={ "1": self.sprint,
                     "2": self.get_stats,
