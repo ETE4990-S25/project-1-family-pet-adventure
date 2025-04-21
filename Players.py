@@ -65,7 +65,7 @@ class Items:
            """Uses an item if available."""
            if self.uses >0:
                 self.uses -=1
-                print ("Used " + self.name + ". Use left: " + str(self.uses))
+                print ("Used " + self.name + ". You have " + str(self.uses) + " left.")
            else:
                 print(self.name + "has no uses left.")
 

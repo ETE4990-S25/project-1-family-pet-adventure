@@ -1,7 +1,6 @@
-
 #Items.py
 #General space for the physical items that may be encountered in the game
-
+import json
 
 class Items(object):
     """Initializes objects the player can interact with and store."""  
@@ -17,7 +16,7 @@ class Items(object):
     def add_item(self):
         """Allows the player to put the object in their inventory."""
 
-        import json
+        
         with open('Item_Data.json') as Item_Data:
             inventory_dictionary = json.load(Item_Data)
         inventory = json.dumps(inventory_dictionary, indent=2)
