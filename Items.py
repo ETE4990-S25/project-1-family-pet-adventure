@@ -23,6 +23,7 @@ class Items(object):
         print(f"You have added {self.name} to your inventory.")
 
         # structure taken and modified from ChatGPT
+        x = 0
         flag = False
         try: 
             if flag:
