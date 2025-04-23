@@ -15,41 +15,43 @@ class Items(object):
         
     def add_item(self):
         """Allows the player to put the object in their inventory."""
-
         
         with open('Item_Data.json') as Item_Data:
-            inventory_dictionary = json.load(Item_Data)
-        inventory = json.dumps(inventory_dictionary, indent=2)
+            inventory_dictionary = json.load(Item_Data) # this is the actual json object
+        #inventory = json.dumps(inventory_dictionary, indent=2) # dumps() makes the inventory into a string
 
-        print("You have added "+ thing+" to your inventory.")
+        print(f"You have added {self.name} to your inventory.")
 
+        # structure taken and modified from ChatGPT
+        flag = False
+        try: 
+            if flag:
+                return "This item has already been added to your inventory."
+            
+        except: 
+            for item in self.inventory_dictionary["items"]:
+                # Check for the condition where you want to modify the value
+                for i in range(0, 11):
+                    if item["id"] == i:
 
-        #taken from ChatGPT
-        # Iterate through the list of items
-        for item in self.inventory_dictionary["items"]:
-            # Check for the condition where you want to modify the value
-        
-            x = 0
-            for i in range(0, 11):
-                if item["id"] == i:
+                        if item["name"] == "Empty Slot":
+                            # Change the 'name' value of the item with id 0
+                            item["name"] = self.name  # You can change this to any value you want
+                            item["description"] = self.description
+                            item["uses"] = self.uses
+                            
+                            flag = True
 
-                    if item["name"] == "Empty Slot":
-                        # Change the 'name' value of the item with id 0
-                        item["name"] = self.name  # You can change this to any value you want
-                        item["description"] = self.description
-                        item["uses"] = self.uses
-                        
-                        x = 1
+                            x = 1
+                            break
+
+                        if x == 1: 
+                            break
+                    
+                    if x == 1:
                         break
-
-                    if x == 1: 
-                        break
-                
                 if x == 1:
                     break
-            if x == 1:
-                break
-       
         # with open('Item_Data.json', 'w') as Item_Data:
         #     json.dump(data, Item_Data)
        
