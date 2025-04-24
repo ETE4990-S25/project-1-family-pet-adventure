@@ -67,7 +67,7 @@ class Exploring(object):
         print(f"Jump stat: {self.jump} units.")
         print(f"Sneak stat: {self.sneak} units.")
 
-class Items:
+class Items(object):
       """Represents collectible and usuable items."""
 
       def __init__(self, name, uses, description):
@@ -99,6 +99,7 @@ else:
 player.display_players()
 player.show_info()
 
+#representative of Menu.py file
 def save_game(player):
     """Save the game details to a json file."""
     game_data= {
