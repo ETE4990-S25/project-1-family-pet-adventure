@@ -1,33 +1,48 @@
 ###Gives option to the player to choose a pet character and their name.
 ##Two characters in our game are a dog or a cat.
+import json
 class Player_Choice(object):
     """Creates a class to choose a player and a pet."""
 
-    def __init__(self, pet_name=None, pet_type=None):
+    def __init__(self, pet_name=None, pet_type=None, available_items=None):
+        """For player's item collection."""
         self.pet_name = pet_name
         self.pet_type= pet_type
         self.inventory= []
         self.jump= 1.0
         self.sneak=1.0
-        """For player's item collection."""
+        self.available_items = available_items if available_items else []
 
-    def Select_pet(self, pet_choice=None):
-        self.pet_choice= pet_choice
+        starting_items = ["Brick","Shoes", "Laptop", "Food Bowl"]
+        player = Player_Choice("Bobby", "Dog", available_items=starting_items)
+        print("Available items for the player:", player.available_items)
+    
+    def show_info(self):
+        """Displays player info and available items."""
+        print(f"Pet Name: {self.pet_name}")
+        print(f"Pet Type: {self.pet_type}")
+        print(f"Jump Level: {self.jump}")
+        print(f"Sneak Level: {self.sneak}")
+        print("Available Items:")
+        for item in self.available_items:
+            print(f" - {item}")
+        print()
+
+    def Select_pet(self):
         """Allow the player to select their pet and pet's name."""
-        pet_choice= ["Dog", "Cat"]
-
-        self.pet_name= input ("Please enter your pet's name: ")
-        self.pet_type=input("Please choose your pet type dog or cat?: ")
-
-        if self.pet_type not in pet_choice:  ###For player to pick their pet's name and pet type. 
-                print ("Invalid choice, defaulting to a dog.") 
-                self.pet_type= "Dog"
-        """For invalid pet type from player 1, this will deafult the selection to a dog."""
-
+        self.pet_name = input ("Please enter your pet's name: ")
+        valid_choices = ["Dog", "Cat"]
+        self.pet_type = ""
+        
+        while self.pet_choice not in valid_choices:
+            choice = input("Please choose your pet type (Dog or Cat): ").capitalize()
+        if choice in valid_choices:
+            self.pet_type = choice
+        else:
+            print("Invalid choice. Please type 'Dog' or 'Cat'.")
     def display_players(self):
         """Display the players info with their names and pet's name."""
-        print("\nPlayer: " + self.pet_name + ":" + self.pet_type)
-
+        print(f"\nYou're playing as a {self.pet_type} named {self.pet_name}")
 class Exploring(object):
     """Moving around the space."""
     def __init__(self, jump=1.0, sneak=1.0):
@@ -65,7 +80,7 @@ class Items:
            """Uses an item if available."""
            if self.uses >0:
                 self.uses -=1
-                print ("Used " + self.name + ". You have " + str(self.uses) + " left.")
+                print(f"You've used the {self.name}. You have {self.uses} left in your inventory.")
            else:
                 print(self.name + "has no uses left.")
 
@@ -75,32 +90,14 @@ class Items:
 
 player = Player_Choice()
 player.Select_pet()
+
+if player.pet_type == "Dog":
+    player.available_items = ["Brick", "Shoes", "Laptop", "Food Bowl"]
+else:
+    player.available_items = ["Yarn", "Glasses", "Phone"]
+
 player.display_players()
-
-
-explore= Exploring ()
-
-explore.jump_up()
-explore.sneaking()
-explore.get_stats()
-
-stick= Items("Stick", 3, "A simple stick to poke things.")
-player.inventory.append(stick)
-
-stick.display_item()
-stick.use_item()
-stick.use_item()
-       
-
-Family_Pet_Adventure= Player_Choice()
-
-Family_Pet_Adventure.Select_pet()
-
-Family_Pet_Adventure.display_players()
-
-
-
-import json
+player.show_info()
 
 def save_game(player):
     """Save the game details to a json file."""
@@ -117,31 +114,55 @@ def save_game(player):
 
     print("Game saved successfully!")
 
-def menu():
+def load_game():
+    try:
+        with open("save_game.json", "r") as load_file:
+            data = json.load(load_file)
+            player = Player_Choice(data["pet_name"], data["pet_type"])
+            player.jump = data["jump_stat"]
+            player.sneak = data["sneak_stat"]
+            player.inventory = [Items(item["name"], item["uses"], item["description"]) for item in data["inventory"]]
+            print("Game loaded successfully!")
+            return player
+    except FileNotFoundError:
+        print("No saved game found.")
+        return None
+
+def menu(player):
     """""Creates a menu players can access."""
 
     options = ["Exit Menu", "Display Inventory","Save Game"]
     print("Options: \n")
-    
-    for i in enumerate(options, start = 1):
-        print(i)
+    for i, option in enumerate(options, start=1):
+        print(f"{i}. {option}")
+    try:
+        choice = int(input("Enter the number of the chosen option: "))
+        if choice == 1:
+            return 
+        elif choice == 2:
+            for item in player.inventory:
+                print(f"Item: {item.name}, Uses: {item.uses}, Description: {item.description}") 
+        elif choice == 3:
+            save_game(player)
+        else:
+            print("Invalid choice.")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
 
-    choice = int(input("Enter the number of the chosen option: "))
+###Game Start
+print("Welcome to Family Pet Adventure!")
+load_choice = input("Would you like to load a saved game? (yes/no): ").lower()
 
-    if choice == 1:
-        return 
-    elif choice == 2:
-        for item in player.inventory:
-            print(f"Item: {item.name}, Uses: {item.uses}, Description: {item.description}") 
-        return
+if load_choice == "yes":
+    player = load_game()
+    if not player:
+        player = Player_Choice()
+        player.Select_pet()
+else:
+    player = Player_Choice()
+    player.Select_pet()
 
-    elif choice == 3:
-        save_game(player)
-        return
-    else:
-        print("Invalid choice.")
+player.display_players()
+menu(player)
 
-player.Select_pet()
-menu()
-       
    
