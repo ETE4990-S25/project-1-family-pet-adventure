@@ -56,13 +56,17 @@ class Items(object):
         # with open('Item_Data.json', 'w') as Item_Data:
         #     json.dump(data, Item_Data)
        
-    def drop_item(self, number):
+    def drop_item(self):
         """The player will drop an item in their inventory."""
         
         Items.display_items()
 
-        int(input("What is the slot number of the item you want to drop?"))
-        print("You have chosen to drop "+ number)
+        try:
+            number = int(input("What is the slot number of the item you want to drop?"))
+        except ValueError:
+            print("Oops! You have entered an invalid input.")
+
+        print(f"You have chosen to drop {number}")
 
         #modified from ChatGPT
         # Iterate through the list of items
@@ -118,12 +122,12 @@ class Phone(Items):
         """Hides humans' phone to create a distraction."""
         
         destraction_time = 1000
-        print(f"You have hidden the phone! {destraction_time/60} minutes before the humans are no longer distracted.")
         
         if self.uses == 0:
             print("You've already hidden the phone.")
-
-        self.uses -= 1
+        else:
+            print(f"You have hidden the phone! {destraction_time/60} minutes before the humans are no longer distracted.")
+            self.uses -= 1
 
 
 # Regular items
