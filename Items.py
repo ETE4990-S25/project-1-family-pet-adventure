@@ -108,7 +108,7 @@ class Laptop(Items):
 
     def pet_cam(self, password):
         """Allows the player to turn off the doggy cams."""
-        if password == 1111:
+        if password == 2854:
             print("The cameras are disabled.")
 
         if self.uses == 0:
