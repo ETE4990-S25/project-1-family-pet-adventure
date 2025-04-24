@@ -6,7 +6,7 @@ class Player_Choice(object):
 
     def __init__(self, pet_name=None, pet_type=None, available_items=None):
         """For player's item collection."""
-        self.pet_name = pet_name
+        self.pet_name = pet_name  # the init function is different than the Player_Choice function in the Jupyter
         self.pet_type= pet_type
         self.inventory= []
         self.jump= 1.0
@@ -14,7 +14,7 @@ class Player_Choice(object):
         self.available_items = available_items if available_items else []
 
         starting_items = ["Brick","Shoes", "Laptop", "Food Bowl"]
-        player = Player_Choice("Bobby", "Dog", available_items=starting_items)
+        player = Player_Choice("Bobby", "Dog", available_items=starting_items) # these lines cause issues when trying to run the game as a python script
         print("Available items for the player:", player.available_items)
     
     def show_info(self):
