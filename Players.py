@@ -43,29 +43,7 @@ class Player_Choice(object):
     def display_players(self):
         """Display the players info with their names and pet's name."""
         print(f"\nYou're playing as a {self.pet_type} named {self.pet_name}")
-class Exploring(object):
-    """Moving around the space."""
-    def __init__(self, jump=1.0, sneak=1.0):
-        """ Initialize jump, and sneak."""
-        self.jump = jump
-        self.sneak = sneak
-    
-    def jump_up(self):
-        """Allows player to jump. The more the player jumps, the stronger they become."""
 
-        print(f"You jump {self.jump} units.")  ###Learned to use f and {} instead of + here since a float is being passed from the internet. 
-        self.jump+= 0.25
-
-    def sneaking(self):
-        """Allows player to sneak around. The more the player does so, the stronger they become."""
-        print("You decide to sneak.")
-        self.sneak+= 0.25
-        
-    def get_stats(self):
-        """Displays the stats of the player on the console."""
-        print("Your general stats are as follows: ")
-        print(f"Jump stat: {self.jump} units.")
-        print(f"Sneak stat: {self.sneak} units.")
 
 class Items(object):
       """Represents collectible and usuable items."""
@@ -166,4 +144,27 @@ else:
 player.display_players()
 menu(player)
 
-   
+
+#class Exploring(object):
+#     """Moving around the space."""
+#     def __init__(self, jump=1.0, sneak=1.0):
+#         """ Initialize jump, and sneak."""
+#         self.jump = jump
+#         self.sneak = sneak
+    
+#     def jump_up(self):
+#         """Allows player to jump. The more the player jumps, the stronger they become."""
+
+#         print(f"You jump {self.jump} units.")  ###Learned to use f and {} instead of + here since a float is being passed from the internet. 
+#         self.jump+= 0.25
+
+#     def sneaking(self):
+#         """Allows player to sneak around. The more the player does so, the stronger they become."""
+#         print("You decide to sneak.")
+#         self.sneak+= 0.25
+        
+#     def get_stats(self):
+#         """Displays the stats of the player on the console."""
+#         print("Your general stats are as follows: ")
+#         print(f"Jump stat: {self.jump} units.")
+#         print(f"Sneak stat: {self.sneak} units.")

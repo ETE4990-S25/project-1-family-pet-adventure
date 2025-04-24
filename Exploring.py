@@ -28,17 +28,17 @@ class CatMoves(Moves):
         self.high_leap = True
         self.climb = True
         
-    def furniture_leap(self):
-        if self.high_leap: 
-            print("You jump onto the furniture.")
-        else:
-            print("Your attempt failed.")
-
     def perform_action(self):
         if self.climb:
             print("You climb up the stucture.")
         else:
             print("You can't climb right now.")
+
+    def furniture_leap(self):
+        if self.high_leap: 
+            print("You jump onto the furniture.")
+        else:
+            print("Your attempt failed.")
 
     def cat_walking_and_obstacles(self): #added function name and took while from gameplay section
         """Mechanic for walking around the game and discovering things."""
@@ -71,7 +71,7 @@ class CatMoves(Moves):
             moves={ "1": self.furniture_leap,
                     "2": self.get_stats,
                     "3": self.jump_up,
-                    "4": self.climb_up}
+                    "4": self.perform_action}
             if move_choice in moves:
                 moves[move_choice]()
             else:
