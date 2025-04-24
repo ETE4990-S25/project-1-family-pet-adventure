@@ -122,13 +122,13 @@ class DogMoves(Moves):
             item_choice= self.get_valid_input("chosee an object(1-4):", objects.keys())
             obj = objects[item_choice]
             if callable(obj):
-                obj()
+                result = obj()
             else:
                 print(f"Your inspect the {obj}.")
+                result = None
 
-            x = random.randint(1, 3)
-            if item_choice in objects:
-                objects[item_choice]()
+            if item_choice == "4":
+                print("You found the key in the Food Bowl.")
+                found_key = True
             else:
-                print("Invalid object choice.")
-            x = random.randint(1,3)
+                print("Still no key. Keep looking.")
