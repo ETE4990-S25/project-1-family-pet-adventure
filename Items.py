@@ -12,7 +12,11 @@ class Items(object):
         self.uses = uses #determines how many uses an object gets
         self.description = description
         self.inventory_dictionary= inventory_dictionary
-        
+
+    def display_item(self):
+        """Displays item information."""
+        print("Item: " + self.name + ":" + self.description + "(Uses:" +str(self.uses)+")")
+
     def add_item(self):
         """Allows the player to put the object in their inventory."""
         
@@ -59,7 +63,7 @@ class Items(object):
     def drop_item(self):
         """The player will drop an item in their inventory."""
         
-        Items.display_items()
+        Items.display_item()
 
         try:
             number = int(input("What is the slot number of the item you want to drop?"))
@@ -143,12 +147,12 @@ class Brick(Items):
     def throw(self):
         """Allows user to use the brick. Great for moving a pile of sticks."""
         
-        print("You have thrown the brick into the obstacle to clear it.")
         # Items.use_item()
         # self.use_item()
 
         self.uses -= 1
         if self.uses > 0:
+            print("You have thrown the brick into the obstacle to clear it.")
             print(f"Only {self.uses} left!")
         elif self.uses <= 0:
             print("Not so fast! Any more uses of this object, "
@@ -194,14 +198,13 @@ class Shoes(Items):
 
         self.uses -= 1
         if self.uses > 0:
+            print("You super jumped!")
+            print("You were able to clear this obstacle and get one step closer to the key.")
             print(f"Only {self.uses} left!")
         elif self.uses <= 0:
             print("Not so fast! Any more uses of this object, "
             "and the humans may get suspicious")
             self.drop_item()
-
-        print("You super jumped!")
-        print("You were able to clear this obstacle and get one step closer to the key.")
 
 
 
