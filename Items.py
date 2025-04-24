@@ -12,7 +12,24 @@ class Items(object):
         self.uses = uses #determines how many uses an object gets
         self.description = description
         self.inventory_dictionary= inventory_dictionary
-        
+
+    def display_items(mode): # Moved from Items class
+        """Displays the objects you have in your inventory."""
+
+        with open('Item_Data.json') as Item_Data:
+            inventory_dictionary = json.load(Item_Data)
+        inventory_json = json.dumps(inventory_dictionary, indent=2)
+
+        if mode == 1:
+            """Displays inventory on console"""
+            for all_Item_Data in inventory_dictionary["items"]: #structure taken from ChatGPT
+                print(all_Item_Data)
+        elif mode == 2: 
+            """Returns inventory values to whoever is asking"""
+            return inventory_dictionary
+        else: 
+            return
+
     def add_item(self):
         """Allows the player to put the object in their inventory."""
         
@@ -59,7 +76,7 @@ class Items(object):
     def drop_item(self):
         """The player will drop an item in their inventory."""
         
-        Items.display_items()
+        Items.display_item()
 
         try:
             number = int(input("What is the slot number of the item you want to drop?"))
@@ -104,7 +121,7 @@ class Laptop(Items):
 
     def pet_cam(self, password):
         """Allows the player to turn off the doggy cams."""
-        if password == 1111:
+        if password == 2854:
             print("The cameras are disabled.")
 
         if self.uses == 0:
@@ -143,12 +160,12 @@ class Brick(Items):
     def throw(self):
         """Allows user to use the brick. Great for moving a pile of sticks."""
         
-        print("You have thrown the brick into the obstacle to clear it.")
         # Items.use_item()
         # self.use_item()
 
         self.uses -= 1
         if self.uses > 0:
+            print("You have thrown the brick into the obstacle to clear it.")
             print(f"Only {self.uses} left!")
         elif self.uses <= 0:
             print("Not so fast! Any more uses of this object, "
@@ -194,14 +211,13 @@ class Shoes(Items):
 
         self.uses -= 1
         if self.uses > 0:
+            print("You super jumped!")
+            print("You were able to clear this obstacle and get one step closer to the key.")
             print(f"Only {self.uses} left!")
         elif self.uses <= 0:
             print("Not so fast! Any more uses of this object, "
             "and the humans may get suspicious")
             self.drop_item()
-
-        print("You super jumped!")
-        print("You were able to clear this obstacle and get one step closer to the key.")
 
 
 

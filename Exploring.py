@@ -40,6 +40,64 @@ class CatMoves(Moves):
         else:
             print("You can't climb right now.")
 
+    def cat_walking_and_obstacles(self): #added function name and took while from gameplay section
+        """Mechanic for walking around the game and discovering things."""
+        import Items
+        import random
+        yarn= Items.Yarn(name="Yarn", uses=10)
+        glasses = Items.Glasses("Glasses", 5)
+        phone = Items.Phone("Phone", 5) 
+        
+        x = 0
+        
+        while x != 6: # to keep the player in a playing loop, looking around the room
+            
+            print("You walk around the room, searching for the key . . .\n")
+            
+            if x%2==0:
+                print("You find a pile of shredded paper. Does this have the key? Use your inventory.\n")
+            elif x%2==1:
+                print("You come across a tunnel. Use your inverntory to cross it.\n")
+            elif x%2==2:
+                print("You hear a human approaching. Distract them.")
+                        
+            print("You have 4 options to explore: \n1:Furniture Leap \n2:Get_stats \n3:Jump Up \n4:Climb up.")
+            print("=============")
+            print("You have 3 items to use to find your key: \n1:Yarn  \n2:Glasses \n3:Phone.")
+            print("=============")
+            
+            move_choice= input("Choose an action (1-4):")
+            item_choice= input("chosee an object(1-3):")
+            moves={ "1": self.furniture_leap,
+                    "2": self.get_stats,
+                    "3": self.jump_up,
+                    "4": self.climb_up}
+            if move_choice in moves:
+                moves[move_choice]()
+            else:
+                print("invalid move choice.")
+            
+            
+            objects={"1":yarn.net_yarn, 
+                    "2":glasses.night_vision, 
+                    "3":phone.hide_phone}
+            if item_choice in objects:
+                objects[item_choice]()
+            else:
+                print("Invalid object choice.")
+
+            x = random.randint(1,6)
+
+        print("After much searching, you finally found the key!")
+        print("Unfortunately, it requires you to answer a riddle to unlock the treat jar.\n")
+        print("What walks on four legs in the morning, two at noon, and three at night?")
+        answer = int(input("1. caterpillar\n 2. giant robot\n 3.humans"))
+
+        if answer == 3:
+            print("Congratulations! You found the treat jar and outsmarted the humans' dastardly riddle.")
+            treat_jar = Items.TreatJar
+            # treat_jar.add_item()
+
 class DogMoves(Moves):
     """Represents the  actions a dog can do"""
     def __init__(self, jump, sneak):
@@ -94,6 +152,13 @@ class DogMoves(Moves):
 
     def dog_walking_and_obstacles(self): #added function name and took while from gameplay section
         """Mechanic for walking around the game and discovering things."""
+        
+        import Items
+        import random
+        brick= Items.Brick(name="Brick", uses=10)
+        shoes = Items.Shoes("Shoes", 5)
+        food_bowl = Items.FoodBowl("Food Bowl", 5)
+        
         objects = {
                 "1":self.brick.throw, 
                 "2":Items.Laptop, 
@@ -106,9 +171,9 @@ class DogMoves(Moves):
                 "3": self.jump_up,
                 "4": self.paw_stand
                 }
-    
-        x = 0
-        while x != 3: # to keep the player in a playing loop, looking around the room
+
+        found_key = False
+        while found_key: # to keep the player in a playing loop, looking around the room
             print("You walk around the room, searching for the key . . .\n")
             print("You find a pile of sticks. Does this have the key? Use your inventory.\n")
 
@@ -128,7 +193,8 @@ class DogMoves(Moves):
                 result = None
 
             if item_choice == "4":
-                print("You found the key in the Food Bowl.")
+                print("You found the key in the Food Bowl. You go to the locked room, and it opens!")
+                print("Congratulations! You found the Treat Jar! You win!")
                 found_key = True
             else:
                 print("Still no key. Keep looking.")
