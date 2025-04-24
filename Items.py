@@ -13,9 +13,22 @@ class Items(object):
         self.description = description
         self.inventory_dictionary= inventory_dictionary
 
-    def display_item(self):
-        """Displays item information."""
-        print("Item: " + self.name + ":" + self.description + "(Uses:" +str(self.uses)+")")
+    def display_items(mode): # Moved from Items class
+        """Displays the objects you have in your inventory."""
+
+        with open('Item_Data.json') as Item_Data:
+            inventory_dictionary = json.load(Item_Data)
+        inventory_json = json.dumps(inventory_dictionary, indent=2)
+
+        if mode == 1:
+            """Displays inventory on console"""
+            for all_Item_Data in inventory_dictionary["items"]: #structure taken from ChatGPT
+                print(all_Item_Data)
+        elif mode == 2: 
+            """Returns inventory values to whoever is asking"""
+            return inventory_dictionary
+        else: 
+            return
 
     def add_item(self):
         """Allows the player to put the object in their inventory."""
