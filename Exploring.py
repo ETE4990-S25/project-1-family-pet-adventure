@@ -2,6 +2,7 @@
 # how players interact with the world
 import Items
 import random
+import Items
 class Moves(object):
     """Moving around the space."""
     def __init__(self, jump = 1, sneak = 1):
@@ -13,6 +14,11 @@ class Moves(object):
         """Allows player to jump. The more the player jumps, the stronger they become."""
         print(f"You jump {self.jump} units.")  ###Learned to use f and {} instead of + here since a float is being passed from the internet. 
         self.jump += 0.25
+
+    def sneaking(self):
+        """Allows player to sneak around. The more the player does so, the stronger they become."""
+        print("You decide to sneak.")
+        self.sneak += 0.25
 
     def get_stats(self):
         """Displays the stats of the player on the console."""
@@ -153,7 +159,7 @@ class DogMoves(Moves):
     def dog_walking_and_obstacles(self): #added function name and took while from gameplay section
         """Mechanic for walking around the game and discovering things."""
         
-        import Items
+
         import random
         brick= Items.Brick(name="Brick", uses=10)
         shoes = Items.Shoes("Shoes", 5)
