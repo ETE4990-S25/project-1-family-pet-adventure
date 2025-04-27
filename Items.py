@@ -11,7 +11,8 @@ class Items(object):
         self.name = name
         self.uses = uses #determines how many uses an object gets
         self.description = description
-        self.inventory_dictionary= inventory_dictionary
+        self.inventory_dictionary = inventory_dictionary
+
 
     def display_items(mode): # Moved from Items class
         """Displays the objects you have in your inventory."""
@@ -35,43 +36,28 @@ class Items(object):
         
         with open('Item_Data.json') as Item_Data:
             inventory_dictionary = json.load(Item_Data) # this is the actual json object
-        #inventory = json.dumps(inventory_dictionary, indent=2) # dumps() makes the inventory into a string
 
         print(f"You have added {self.name} to your inventory.")
 
-        # structure taken and modified from ChatGPT
-        x = 0
         flag = False
-        try: 
-            if flag:
-                return "This item has already been added to your inventory."
+
+        for item in inventory_dictionary["items"]:
+
+            if item["name"] == "Empty Slot":
+                item["name"] = self.name 
+                item["description"] = self.description
+                item["uses"] = self.uses
+                flag = True
+
+                break
             
-        except: 
-            for item in self.inventory_dictionary["items"]:
-                # Check for the condition where you want to modify the value
-                for i in range(0, 11):
-                    if item["id"] == i:
+        if flag: # structure for saving item data taken from ChatGPT
+            with open('Item_Data.json', 'w') as Item_Data:  
+                json.dump(inventory_dictionary, Item_Data, indent=2)  
 
-                        if item["name"] == "Empty Slot":
-                            # Change the 'name' value of the item with id 0
-                            item["name"] = self.name  # You can change this to any value you want
-                            item["description"] = self.description
-                            item["uses"] = self.uses
-                            
-                            flag = True
-
-                            x = 1
-                            break
-
-                        if x == 1: 
-                            break
-                    
-                    if x == 1:
-                        break
-                if x == 1:
-                    break
-        # with open('Item_Data.json', 'w') as Item_Data:
-        #     json.dump(data, Item_Data)
+            print("Inventory successfully updated!")
+        else:
+            print("No empty slots available for the new item.")
        
     def drop_item(self):
         """The player will drop an item in their inventory."""
@@ -130,7 +116,7 @@ class Laptop(Items):
 
 class Phone(Items):
     """Creates a phone that can be used. Careful!"""
-    def __init__(self, name, uses, description = "A human's phone. Hide it to distract them.", inventory_dictionary = None):
+    def __init__(self, name="Phone", uses=None, description = "A human's phone. Hide it to distract them.", inventory_dictionary = None):
         super().__init__(name, uses, description, inventory_dictionary)
 
         self.uses = 1   
@@ -150,7 +136,7 @@ class Phone(Items):
 # Regular items
 class Brick(Items):
     """Creates a brick that can be used."""
-    def __init__(self, name=None, uses=None, description = "A heavy brick.", inventory_dictionary=None):
+    def __init__(self, name="Brick", uses=None, description = "A heavy brick.", inventory_dictionary=None):
         super().__init__(name, uses, description, inventory_dictionary)
 
         self.name = name
@@ -175,7 +161,7 @@ class Brick(Items):
 
 class Yarn(Items):
     """Creates a ball of yarn that can be used."""
-    def __init__(self, name, uses, description = "Yarn 100ft long.", inventory_dictionary = None):
+    def __init__(self, name="Yarn", uses=None, description = "Yarn 100ft long.", inventory_dictionary = None):
         super().__init__(name, uses, description, inventory_dictionary)
 
         self.name = name
@@ -199,7 +185,7 @@ class Yarn(Items):
 
 class Shoes(Items):
     """Creates a shoe that can be used."""
-    def __init__(self, name, uses, description = "Shoes to help you superjump.", inventory_dictionary = None):
+    def __init__(self, name="Shoes", uses=None, description = "Shoes to help you superjump.", inventory_dictionary = None):
         super().__init__(name, uses, description, inventory_dictionary)
         self.name = name
         self.uses = uses
@@ -223,7 +209,7 @@ class Shoes(Items):
 
 class Glasses(Items):
     """Creates a pair of glasses that can be used."""
-    def __init__(self, name, uses, description = "Sees through obstacles", inventory_dictionary = None):
+    def __init__(self, name="Glases", uses=None, description = "Sees through obstacles", inventory_dictionary = None):
         super().__init__(name, uses, description, inventory_dictionary)
         self.name = name
         self.uses = uses
@@ -247,7 +233,7 @@ class Glasses(Items):
 
 class FoodBowl(Items):
     """Creates a food bowl that can be used."""
-    def __init__(self, name, uses, description="Empty food bowl to make a loud sound", inventory_dictionary=None):
+    def __init__(self, name="Food Bowl", uses=None, description="Empty food bowl to make a loud sound", inventory_dictionary=None):
         super().__init__(name, uses, description, inventory_dictionary)
         self.name = name
         self.uses = uses
