@@ -1,13 +1,76 @@
 {
-    "pet_name": "Bob",
+    "pet_name": "Millie",
     "pet_type": "Dog",
     "jump_stat": 1.0,
     "sneak_stat": 1.0,
-    "inventory": [
-        {
-            "name": null,
-            "uses": 5,
-            "description": null
-        }
-    ]
+    "inventory": {
+        "items": [
+            {
+                "id": 0,
+                "name": "Empty Slot",
+                "description": "Empty Slot",
+                "uses": "Empty Slot"
+            },
+            {
+                "id": 1,
+                "name": "Shoes",
+                "description": "Shoes to help you superjump.",
+                "uses": 5
+            },
+            {
+                "id": 2,
+                "name": "Laptop",
+                "description": "Laptop",
+                "uses": 1
+            },
+            {
+                "id": 3,
+                "name": "Food Bowl",
+                "description": "Empty food bowl to make a loud sound",
+                "uses": 5
+            },
+            {
+                "id": 4,
+                "name": "Brick",
+                "description": "A heavy brick.",
+                "uses": 5
+            },
+            {
+                "id": 5,
+                "name": "Shoes",
+                "description": "Shoes to help you superjump.",
+                "uses": 5
+            },
+            {
+                "id": 6,
+                "name": "Laptop",
+                "description": "Laptop",
+                "uses": 1
+            },
+            {
+                "id": 7,
+                "name": "Food Bowl",
+                "description": "Empty food bowl to make a loud sound",
+                "uses": 5
+            },
+            {
+                "id": 8,
+                "name": "Empty Slot",
+                "description": "Empty Slot",
+                "uses": "Empty Slot"
+            },
+            {
+                "id": 9,
+                "name": "Empty Slot",
+                "description": "Empty Slot",
+                "uses": "Empty Slot"
+            },
+            {
+                "id": 10,
+                "name": "Empty Slot",
+                "description": "Empty Slot",
+                "uses": "Empty Slot"
+            }
+        ]
+    }
 }

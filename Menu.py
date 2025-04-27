@@ -1,5 +1,5 @@
-import Items
 import json
+from Items import Items
 from Players import Player_Choice #, Dog, Cat
 
 def save_game(player):
@@ -9,13 +9,14 @@ def save_game(player):
         "pet_type": player.pet_type,
         "jump_stat": player.jump,
         "sneak_stat": player.sneak,
-        "inventory": [{"name": player.name, "uses": Items.uses, "description": Items.description} for item in player.inventory]
+        "inventory": Items.display_items(player, 2)
     }
 
     with open("save_game.json", "w") as save_file:
         json.dump(game_data, save_file, indent=4)
 
     print("Game saved successfully!")
+
 
 def load_game():
     try:
@@ -24,7 +25,7 @@ def load_game():
             player = Player_Choice(data["pet_name"], data["pet_type"])
             player.jump = data["jump_stat"]
             player.sneak = data["sneak_stat"]
-            player.inventory = [Items(item["name"], item["uses"], item["description"]) for item in data["inventory"]]
+            player.inventory = Items.display_items(player,2)
             print("Game loaded successfully!")
             return player
     except FileNotFoundError:
