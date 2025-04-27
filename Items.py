@@ -14,7 +14,7 @@ class Items(object):
         self.inventory_dictionary = inventory_dictionary
 
 
-    def display_items(mode): # Moved from Items class
+    def display_items(self, mode): # Moved from Items class
         """Displays the objects you have in your inventory."""
 
         with open('Item_Data.json') as Item_Data:
@@ -91,7 +91,7 @@ class Items(object):
             print("Inventory successfully updated!")
         else:
             print("No empty slots available for the new item.")
-            
+
 # Endgame items. 
 
 class TreatJar(Items):

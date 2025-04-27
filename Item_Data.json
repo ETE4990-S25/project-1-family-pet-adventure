@@ -2,9 +2,9 @@
   "items": [
     {
       "id": 0,
-      "name": "Brick",
-      "description": "A heavy brick.",
-      "uses": 5
+      "name": "Empty Slot",
+      "description": "Empty Slot",
+      "uses": "Empty Slot"
     },
     {
       "id": 1,
@@ -26,27 +26,27 @@
     },
     {
       "id": 4,
-      "name": "Empty Slot",
-      "description": "Empty Slot",
-      "uses": "Empty Slot"
+      "name": "Brick",
+      "description": "A heavy brick.",
+      "uses": 5
     },
     {
       "id": 5,
-      "name": "Empty Slot",
-      "description": "Empty Slot",
-      "uses": "Empty Slot"
+      "name": "Shoes",
+      "description": "Shoes to help you superjump.",
+      "uses": 5
     },
     {
       "id": 6,
-      "name": "Empty Slot",
-      "description": "Empty Slot",
-      "uses": "Empty Slot"
+      "name": "Laptop",
+      "description": "Laptop",
+      "uses": 1
     },
     {
       "id": 7,
-      "name": "Empty Slot",
-      "description": "Empty Slot",
-      "uses": "Empty Slot"
+      "name": "Food Bowl",
+      "description": "Empty food bowl to make a loud sound",
+      "uses": 5
     },
     {
       "id": 8,
