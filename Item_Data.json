@@ -2,9 +2,9 @@
   "items": [
     {
       "id": 0,
-      "name": "Empty Slot",
-      "description": "Empty Slot",
-      "uses": "Empty Slot"
+      "name": "Yarn",
+      "description": "Yarn 100ft long.",
+      "uses": 5
     },
     {
       "id": 1,
@@ -50,15 +50,15 @@
     },
     {
       "id": 8,
-      "name": "Empty Slot",
-      "description": "Empty Slot",
-      "uses": "Empty Slot"
+      "name": "Phone",
+      "description": "A human's phone. Hide it to distract them.",
+      "uses": 1
     },
     {
       "id": 9,
-      "name": "Empty Slot",
-      "description": "Empty Slot",
-      "uses": "Empty Slot"
+      "name": "Glases",
+      "description": "Sees through obstacles",
+      "uses": 5
     },
     {
       "id": 10,
