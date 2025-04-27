@@ -198,3 +198,61 @@ class DogMoves(Moves):
                 found_key = True
             else:
                 print("Still no key. Keep looking.")
+
+#def dog_walking_and_obstacles(self): #added function name and took while from gameplay section
+    #     """Mechanic for walking around the game and discovering things."""
+    #     import Items
+    #     import random
+    #     brick= Items.Brick(name="Brick", uses=10)
+    #     shoes = Items.Shoes("Shoes", 5)
+    #     food_bowl = Items.FoodBowl("Food Bowl", 5)
+        
+    #     x = 0
+        
+    #     while x != 4: # to keep the player in a playing loop, looking around the room
+            
+    #         print("You walk around the room, searching for the key . . .\n")
+            
+    #         if x%2==0:
+    #             print("You find a pile of sticks. Does this have the key? Use your inventory.\n")
+    #         elif x%2==1:
+    #             print("You come across a large dresser blocking your way. Use your inventory.\n")
+            
+                        
+    #         print("You have 4 options to explore: \n1:Sprint \n2:Get_stats \n3:Jump Up\n4:Paw Stand.")
+    #         print("=============")
+    #         print("You have 4 items to use to find your key: \n1:Brick \n2:Laptop \n3:Shoes \n4:Food_Bowl.")
+    #         print("=============")
+            
+    #         move_choice= input("Choose an action (1-4):")
+    #         item_choice= input("chosee an object(1-4):")
+    #         moves={ "1": self.sprint,
+    #                 "2": self.get_stats,
+    #                 "3": self.jump_up,
+    #                 "4": self.paw_stand}
+    #         if move_choice in moves:
+    #             moves[move_choice]()
+    #         else:
+    #             print("invalid move choice.")
+            
+            
+    #         objects={"1":brick.throw, 
+    #                 ##"2":Items.Laptop, ##Couldn't get laptop to work with objects. 
+    #                 "3":shoes.super_jump, 
+    #                 "4":food_bowl.clang}
+    #         if item_choice in objects:
+    #             objects[item_choice]()
+    #         else:
+    #             print("Invalid object choice.")
+
+    #         x = random.randint(1,4)
+
+    #     print("After much searching, you finally find the key!")
+    #     print("Unfortunately, it requires you to answer a riddle to unlock the treat jar.\n")
+    #     print("What walks on four legs in the morning, two at noon, and three at night?")
+    #     answer = int(input("1. caterpillar\n 2. giant robot\n 3.humans"))
+
+    #     if answer == 3:
+    #         print("Congratulations! You found the treat jar and outsmarted the humans' dastardly riddle.")
+    #         treat_jar = Items.TreatJar
+    #         #treat_jar.add_treat_jar()

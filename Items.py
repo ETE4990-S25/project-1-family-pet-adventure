@@ -157,9 +157,6 @@ class Brick(Items):
 
     def throw(self):
         """Allows user to use the brick. Great for moving a pile of sticks."""
-        
-        # Items.use_item()
-        # self.use_item()
 
         self.uses -= 1
         if self.uses > 0:
