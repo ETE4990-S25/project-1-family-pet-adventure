@@ -163,7 +163,7 @@ class DogMoves(Moves):
                 "1":self.brick.throw, 
                 "2":Items.Laptop, 
                 "3":self.shoes.super_jump, 
-                "4":self.food_bowl.inspect
+                "4":self.food_bowl.clang
                 }
         moves = { 
                 "1": self.sprint,
