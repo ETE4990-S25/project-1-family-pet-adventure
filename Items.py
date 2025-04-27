@@ -19,7 +19,6 @@ class Items(object):
 
         with open('Item_Data.json') as Item_Data:
             inventory_dictionary = json.load(Item_Data)
-        inventory_json = json.dumps(inventory_dictionary, indent=2)
 
         if mode == 1:
             """Displays inventory on console"""
@@ -62,24 +61,37 @@ class Items(object):
     def drop_item(self):
         """The player will drop an item in their inventory."""
         
-        Items.display_item()
+        self.display_items(1)
+        inventory_dictionary = self.display_items(2)
 
-        try:
-            number = int(input("What is the slot number of the item you want to drop?"))
-        except ValueError:
-            print("Oops! You have entered an invalid input.")
-
-        print(f"You have chosen to drop {number}")
-
-        #modified from ChatGPT
-        # Iterate through the list of items
-        for item in self.inventory_dictionary["items"]:
-
-            if item["id"] == number:
-                item["name"] = "Empty Slot"  
-                item["description"] = "Empty Slot"
-                item["category"] = "Empty Slot"
+        input_flag = True
+        while input_flag:
+            try:
+                number = int(input("What is the slot number of the item you want to drop?"))
+                print(f"You have chosen to drop {number}")
+                input_flag = False
+            
+            except ValueError or TypeError:
+                print("Oops! You have entered an invalid input.")
         
+        flag = False
+        for item in inventory_dictionary["items"]:
+            if item["id"] == number:
+                item["name"] = "Empty Slot" 
+                item["description"] = "Empty Slot"
+                item["uses"] = "Empty Slot"
+                flag = True
+
+                break
+            
+        if flag: # structure for saving item data taken from ChatGPT
+            with open('Item_Data.json', 'w') as Item_Data:  
+                json.dump(inventory_dictionary, Item_Data, indent=2)  
+
+            print("Inventory successfully updated!")
+        else:
+            print("No empty slots available for the new item.")
+            
 # Endgame items. 
 
 class TreatJar(Items):

@@ -1,6 +1,6 @@
 import Items
 import json
-from Players import Player_Choice, Dog, Cat
+from Players import Player_Choice #, Dog, Cat
 
 def save_game(player):
     """Save the game details to a json file."""

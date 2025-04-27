@@ -60,6 +60,9 @@ class Player_Choice(object):
             return Dog(pet_name=self.pet_name, pet_type=self.pet_type,inventory=self.inventory, jump=1, sneak=3)
         elif choice == "Cat":
             self.inventory = cat_starting_items
+            for items in cat_starting_items:
+                Items.add_item(items)
+
             return Cat(pet_name=self.pet_name, pet_type=self.pet_type,inventory=self.inventory, jump=3, sneak=1)
 
     
@@ -87,14 +90,12 @@ class Cat(Player_Choice):
 
 
 
-player = Player_Choice()
-animal = player.select_pet()
+# player = Player_Choice()
+# animal = player.select_pet()
 # print(f"Pet Type: {player.pet_type}")
 # print(f"Brick:{brick}")
 # # player.display_players()
 # player.show_info()
-
-print(f"Jump Stat:{animal.jump}\tSneak stat:{animal.sneak}")
 
 
 
@@ -160,9 +161,6 @@ print(f"Jump Stat:{animal.jump}\tSneak stat:{animal.sneak}")
 
 
 
-
-
-
 # ###Game Start
 # print("Welcome to Family Pet Adventure!")
 # load_choice = input("Would you like to load a saved game? (yes/no): ").lower()
@@ -178,34 +176,6 @@ print(f"Jump Stat:{animal.jump}\tSneak stat:{animal.sneak}")
 
 # player.display_players()
 # menu(player)
-
-
-
-
-
-
-
-# class Items(object):
-#       """Represents collectible and usuable items."""
-
-#       def __init__(self, name, uses, description):
-#            """Initialize the item."""
-#            self.name= name
-#            self.uses= uses
-#            self.description= description
-
-#       def use_item(self):
-#            """Uses an item if available."""
-#            if self.uses >0:
-#                 self.uses -=1
-#                 print(f"You've used the {self.name}. You have {self.uses} left in your inventory.")
-#            else:
-#                 print(self.name + "has no uses left.")
-
-#       def display_item(self):
-#            """Displays item information."""
-#            print("Item: " + self.name + ":" + self.description + "(Uses:" +str(self.uses)+")")
-
 
 
 

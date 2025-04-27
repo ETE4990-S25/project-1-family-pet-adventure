@@ -12,7 +12,7 @@ class Moves(object):
     def jump_up(self):
         """Allows player to jump. The more the player jumps, the stronger they become."""
         print(f"You jump {self.jump} units.")  ###Learned to use f and {} instead of + here since a float is being passed from the internet. 
-        self.jump+= 0.25
+        self.jump += 0.25
 
     def get_stats(self):
         """Displays the stats of the player on the console."""
