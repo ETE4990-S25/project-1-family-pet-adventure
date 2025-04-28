@@ -1,14 +1,14 @@
 {
-    "pet_name": "Ella",
-    "pet_type": "Cat",
+    "pet_name": "Grace",
+    "pet_type": "Dog",
     "jump_stat": 1.0,
     "sneak_stat": 1.0,
     "inventory": {
         "items": [
             {
                 "id": 0,
-                "name": "Yarn",
-                "description": "Yarn 100ft long.",
+                "name": "Brick",
+                "description": "A heavy brick.",
                 "uses": 5
             },
             {
@@ -31,45 +31,45 @@
             },
             {
                 "id": 4,
-                "name": "Brick",
-                "description": "A heavy brick.",
-                "uses": 5
+                "name": "Empty Slot",
+                "description": "Empty Slot",
+                "uses": "Empty Slot"
             },
             {
                 "id": 5,
-                "name": "Shoes",
-                "description": "Shoes to help you superjump.",
-                "uses": 5
+                "name": "Empty Slot",
+                "description": "Empty Slot",
+                "uses": "Empty Slot"
             },
             {
                 "id": 6,
-                "name": "Laptop",
-                "description": "Laptop",
-                "uses": 1
+                "name": "Empty Slot",
+                "description": "Empty Slot",
+                "uses": "Empty Slot"
             },
             {
                 "id": 7,
-                "name": "Food Bowl",
-                "description": "Empty food bowl to make a loud sound",
-                "uses": 5
+                "name": "Empty Slot",
+                "description": "Empty Slot",
+                "uses": "Empty Slot"
             },
             {
                 "id": 8,
-                "name": "Phone",
-                "description": "A human's phone. Hide it to distract them.",
-                "uses": 1
+                "name": "Empty Slot",
+                "description": "Empty Slot",
+                "uses": "Empty Slot"
             },
             {
                 "id": 9,
-                "name": "Glases",
-                "description": "Sees through obstacles",
-                "uses": 5
+                "name": "Empty Slot",
+                "description": "Empty Slot",
+                "uses": "Empty Slot"
             },
             {
                 "id": 10,
-                "name": "Yarn",
-                "description": "Yarn 100ft long.",
-                "uses": 5
+                "name": "Empty Slot",
+                "description": "Empty Slot",
+                "uses": "Empty Slot"
             }
         ]
     }

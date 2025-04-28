@@ -2,6 +2,8 @@
 # how players interact with the world
 import Items
 import random
+from Players import Player_Choice, Dog, Cat, dog_starting_items, cat_starting_items
+
 class Moves(object):
     """Moving around the space."""
     def __init__(self, jump = 1, sneak = 1):
@@ -47,11 +49,14 @@ class CatMoves(Moves):
 
     def cat_walking_and_obstacles(self): #added function name and took while from gameplay section
         """Mechanic for walking around the game and discovering things."""
-        yarn= Items.Yarn(name="Yarn", uses=10)
-        glasses = Items.Glasses("Glasses", 5)
-        phone = Items.Phone("Phone", 5) 
+        # yarn = Items.Yarn(name="Yarn", uses=10)
+        # glasses = Items.Glasses("Glasses", 5)
+        # phone = Items.Phone("Phone", 5) 
         
-        
+        obj_list = cat_starting_items
+        yarn = obj_list[0]
+        phone = obj_list[1]
+        glasses = obj_list[2]
 
         x = random.randint(1,6)
         num = 6
@@ -158,16 +163,22 @@ class DogMoves(Moves):
 
     def dog_walking_and_obstacles(self): #added function name and took while from gameplay section
         """Mechanic for walking around the game and discovering things."""
+        # brick= Items.Brick(name="Brick", uses=10)
+        # shoes = Items.Shoes("Shoes", 5)
+        # food_bowl = Items.FoodBowl("Food Bowl", 5)
 
-        brick= Items.Brick(name="Brick", uses=10)
-        shoes = Items.Shoes("Shoes", 5)
-        food_bowl = Items.FoodBowl("Food Bowl", 5)
+        obj_list = dog_starting_items
+        brick = obj_list[0]
+        shoes = obj_list[1]
+        laptop = obj_list[2]
+        food_bowl = obj_list[3]
+
         
         objects = {
-                "1":self.brick.throw, 
-                "2":Items.Laptop, 
-                "3":self.shoes.super_jump, 
-                "4":self.food_bowl.clang
+                "1":brick.throw, 
+                "2":laptop.pet_cam(2854), 
+                "3":shoes.super_jump, 
+                "4":food_bowl.clang
                 }
         moves = { 
                 "1": self.sprint,
@@ -202,6 +213,8 @@ class DogMoves(Moves):
                 found_key = True
             else:
                 print("Still no key. Keep looking.")
+
+
 
 #def dog_walking_and_obstacles(self): #added function name and took while from gameplay section
     #     """Mechanic for walking around the game and discovering things."""

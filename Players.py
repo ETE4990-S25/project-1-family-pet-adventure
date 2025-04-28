@@ -65,12 +65,6 @@ class Player_Choice(object):
 
             return Cat(pet_name=self.pet_name, pet_type=self.pet_type,inventory=self.inventory, jump=3, sneak=1)
 
-    def return_objects_list(self):
-        if self.pet_type == "Dog":
-            return dog_starting_items
-        elif self.pet_type == "Cat":
-            return cat_starting_items
-
     def display_players(self):
         """Display the players info with their names and pet's name."""
         print(f"\nYou're playing as a {self.pet_type} named {self.pet_name}")
@@ -90,8 +84,6 @@ class Cat(Player_Choice):
 
         self.jump = 3
         self.sneak = 1
-
-
 
 
 # Testing values
