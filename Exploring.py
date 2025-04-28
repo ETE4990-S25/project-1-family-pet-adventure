@@ -2,7 +2,6 @@
 # how players interact with the world
 import Items
 import random
-import Items
 class Moves(object):
     """Moving around the space."""
     def __init__(self, jump = 1, sneak = 1):
@@ -48,32 +47,33 @@ class CatMoves(Moves):
 
     def cat_walking_and_obstacles(self): #added function name and took while from gameplay section
         """Mechanic for walking around the game and discovering things."""
-        import Items
-        import random
         yarn= Items.Yarn(name="Yarn", uses=10)
         glasses = Items.Glasses("Glasses", 5)
         phone = Items.Phone("Phone", 5) 
         
-        x = 0
         
-        while x != 6: # to keep the player in a playing loop, looking around the room
+
+        x = random.randint(1,6)
+        num = 6
+        while x != num: # to keep the player in a playing loop, looking around the room
             
             print("You walk around the room, searching for the key . . .\n")
             
-            if x%2==0:
+            if num/x >2:
                 print("You find a pile of shredded paper. Does this have the key? Use your inventory.\n")
-            elif x%2==1:
+            elif num/x >1.2 and num/x <3:
                 print("You come across a tunnel. Use your inverntory to cross it.\n")
-            elif x%2==2:
+            elif  num/x <1.5:
                 print("You hear a human approaching. Distract them.")
-                        
+            
+            print("=============")                       
             print("You have 4 options to explore: \n1:Furniture Leap \n2:Get_stats \n3:Jump Up \n4:Climb up.")
             print("=============")
             print("You have 3 items to use to find your key: \n1:Yarn  \n2:Glasses \n3:Phone.")
             print("=============")
             
             move_choice= input("Choose an action (1-4):")
-            item_choice= input("chosee an object(1-3):")
+            item_choice= input("Choose an object(1-3):")
             moves={ "1": self.furniture_leap,
                     "2": self.get_stats,
                     "3": self.jump_up,
@@ -106,10 +106,10 @@ class CatMoves(Moves):
 
 class DogMoves(Moves):
     """Represents the  actions a dog can do"""
-    def __init__(self, jump, sneak):
+    def __init__(self, jump, sneak, energy=5):
         """sets up basic actions"""
         super().__init__(jump, sneak)
-        self.energy = 5 ##Energy system to make actions more interactive.
+        self.energy = energy ##Energy system to make actions more interactive.
         self.brick = Items.Brick(name="Brick", uses=1)
         self.shoes = Items.Shoes("Shoes", 5)
         self.food_bowl = Items.FoodBowl("Food Bowl", 5)
@@ -158,9 +158,7 @@ class DogMoves(Moves):
 
     def dog_walking_and_obstacles(self): #added function name and took while from gameplay section
         """Mechanic for walking around the game and discovering things."""
-        
 
-        import random
         brick= Items.Brick(name="Brick", uses=10)
         shoes = Items.Shoes("Shoes", 5)
         food_bowl = Items.FoodBowl("Food Bowl", 5)

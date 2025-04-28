@@ -62,9 +62,9 @@
     },
     {
       "id": 10,
-      "name": "Empty Slot",
-      "description": "Empty Slot",
-      "uses": "Empty Slot"
+      "name": "Yarn",
+      "description": "Yarn 100ft long.",
+      "uses": 5
     }
   ]
 }
