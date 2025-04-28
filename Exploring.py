@@ -149,7 +149,7 @@ class DogMoves(Moves):
             print("You're too tired to perform tricks.")
 
     def get_stats(self):
-        print(f"Current jump: {self.jump: .f}")
+        print(f"Current jump: {self.jump: .2f}")
         print(f"Energy: {self.energy}")
     
     def get_valid_input(self, prompt, valid_options):
@@ -175,10 +175,10 @@ class DogMoves(Moves):
 
         
         objects = {
-                "1":brick.throw, 
+                "1":brick.throw(), 
                 "2":laptop.pet_cam(2854), 
-                "3":shoes.super_jump, 
-                "4":food_bowl.clang
+                "3":shoes.super_jump(), 
+                "4":food_bowl.clang()
                 }
         moves = { 
                 "1": self.sprint,
@@ -187,7 +187,7 @@ class DogMoves(Moves):
                 "4": self.paw_stand
                 }
 
-        found_key = False
+        found_key = True
         while found_key: # to keep the player in a playing loop, looking around the room
             print("You walk around the room, searching for the key . . .\n")
             print("You find a pile of sticks. Does this have the key? Use your inventory.\n")
@@ -210,7 +210,7 @@ class DogMoves(Moves):
             if item_choice == "4":
                 print("You found the key in the Food Bowl. You go to the locked room, and it opens!")
                 print("Congratulations! You found the Treat Jar! You win!")
-                found_key = True
+                found_key = False
             else:
                 print("Still no key. Keep looking.")
 
